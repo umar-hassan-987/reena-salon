@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "DM Sans", sans-serif;
+  --color-cream: #FAF7F4;
+  --color-cream-dark: #F0EBE5;
+  --color-pink-light: #FBDCDC;
+  --color-pink-medium: #E8B4B8;
+  --color-pink-dark: #D49DA2;
+  --color-maroon: #5C1B2E;
+  --color-maroon-dark: #3D0F1E;
+  --color-dark: #2C1810;
+  --color-text: #555555;
+  --color-text-light: #888888;
+  --color-border: #E8E0DA;
+  --color-beige-section: #F5EDE6;
+}
+
+/*
+ * NOTE: The global reset (* { margin:0; padding:0; box-sizing:border-box })
+ * is already provided by Tailwind v4's @layer base — do NOT duplicate it
+ * outside of a layer, or it will override all Tailwind utility classes.
+ */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-cream);
+    color: var(--color-dark);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+  }
+}
+
+@layer components {
+  .btn-primary {
+    background-color: var(--color-maroon);
+    color: white;
+    padding: 12px 28px;
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+    text-decoration: none;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--color-maroon-dark);
+    transform: translateY(-1px);
+  }
+
+  .btn-outline {
+    background-color: transparent;
+    color: var(--color-dark);
+    padding: 11px 28px;
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: 1px solid var(--color-dark);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-decoration: none;
+  }
+
+  .btn-outline:hover {
+    background-color: var(--color-dark);
+    color: white;
+  }
+
+  .section-label {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-text-light);
+    margin-bottom: 12px;
+  }
+
+  .star {
+    color: #D4A853;
+    font-size: 14px;
+  }
+
+  .img-zoom {
+    transition: transform 0.6s ease;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .img-zoom:hover {
+    transform: scale(1.05);
+  }
+
+  .card-lift {
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  .card-lift:hover {
+    box-shadow: 0 8px 40px rgba(0,0,0,0.12) !important;
+    transform: translateY(-4px);
+  }
+
+  .card-lift-sm {
+    transition: transform 0.3s ease;
+  }
+  .card-lift-sm:hover {
+    transform: translateY(-4px);
+  }
+
+  /* Navbar hover effects — handled by Navbar component inline styles */
+  .mobile-nav-link:hover {
+    background-color: rgba(92, 27, 46, 0.06) !important;
+    border-color: rgba(92, 27, 46, 0.12) !important;
+  }
+}

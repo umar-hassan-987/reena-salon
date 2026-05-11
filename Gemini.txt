@@ -1,0 +1,34 @@
+# Reena Beauty Salon - Project Context
+
+## Overview
+This is a Next.js web application for "Reena Beauty Salon", a luxury beauty salon in Islamabad. It serves as a landing page, service menu, and contact portal.
+
+## Tech Stack
+- **Framework**: Next.js 15 (App Router)
+- **Deployment**: Static Export (`output: 'export'` in `next.config.js`)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS v4 (configured in `src/app/globals.css`)
+- **Icons**: `lucide-react`
+- **Animations**: `framer-motion` (via `AnimateOnScroll` component)
+
+## Design System & Styling
+- **Fonts**: 
+  - Serif (Headings): Playfair Display
+  - Sans (Body): DM Sans
+- **Color Palette** (CSS Variables in `globals.css`):
+  - Cream/Backgrounds: `--color-cream` (#FAF7F4), `--color-cream-dark` (#F0EBE5)
+  - Primary/Accents: `--color-maroon` (#5C1B2E), `--color-maroon-dark` (#3D0F1E)
+  - Text: `--color-dark` (#2C1810), `--color-text` (#555555)
+  - Secondary/Soft: Pink variations (`--color-pink-light`, etc.)
+- **Navbar**: The navbar is fully transparent at the top of the page with white text to overlay dark hero sections. When scrolled down, it transitions to a solid cream background with dark text.
+- **Hero Sections**: Every page features a full-width hero image with a dark gradient overlay to ensure the white text of the transparent navbar remains visible.
+
+## Project Structure
+- `src/app/`: Next.js App Router pages (Home, About, Services, Blogs, Contact, Privacy Policy).
+- `src/components/`: Reusable React components (`Navbar.tsx`, `Footer.tsx`, `AnimateOnScroll.tsx`).
+- `src/app/globals.css`: Core Tailwind directives, CSS variables, and global component classes (e.g., `.btn-primary`, `.btn-outline`).
+
+## Key Guidelines
+- Ensure all new pages maintain the transparent navbar design by including a dark hero section at the top.
+- Since the project uses static export (`output: 'export'`), avoid Next.js features that require a Node.js server at runtime (like `next/image` optimization without an external loader, or API routes).
+- Use standard CSS or Tailwind classes for styling; global styles like `.btn-primary` and `.btn-outline` are pre-defined in `globals.css`.
