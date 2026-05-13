@@ -1,64 +1,30 @@
 'use client';
 
-import { useEffect, useRef, useState, ReactNode } from 'react';
+import { useEffect, useRef } from 'react';
 
-interface AnimateOnScrollProps {
-  children: ReactNode;
-  delay?: number;
-  direction?: 'up' | 'left' | 'right' | 'none';
-  className?: string;
-  style?: React.CSSProperties;
-}
-
-export default function AnimateOnScroll({
-  children,
-  delay = 0,
-  direction = 'up',
-  className,
-  style,
-}: AnimateOnScrollProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [mounted, setMounted] = useState(false);
-  const [visible, setVisible] = useState(false);
+export default function AnimateOnScroll({ children, className = '', direction = 'up', delay = 0 }: any) {
+  const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    setMounted(true);
     const el = ref.current;
     if (!el) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          setTimeout(() => setVisible(true), delay);
-          observer.disconnect();
+          el.classList.add('reveal-active');
+          obs.unobserve(el);
         }
-      },
-      { threshold: 0.05, rootMargin: '0px 0px -20px 0px' }
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [delay]);
-
-  const initialTransform =
-    direction === 'up'
-      ? 'translateY(28px)'
-      : direction === 'left'
-      ? 'translateX(-28px)'
-      : direction === 'right'
-      ? 'translateX(28px)'
-      : 'none';
+      });
+    }, { threshold: 0.12 });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
 
   return (
     <div
       ref={ref}
-      className={className}
-      style={{
-        opacity: !mounted || visible ? 1 : 0,
-        transform: !mounted || visible ? 'translate(0, 0)' : initialTransform,
-        transition: mounted ? 'opacity 0.7s ease, transform 0.7s ease' : 'none',
-        ...style,
-      }}
+      className={`${className} opacity-0 transform transition-all duration-700 translate-y-4 reveal`} 
+      style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
     </div>

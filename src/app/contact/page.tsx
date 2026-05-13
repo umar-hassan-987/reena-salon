@@ -1,187 +1,343 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
-import { MapPin, Phone, Mail, Clock, Plus, Minus } from 'lucide-react';
-import AnimateOnScroll from '@/components/AnimateOnScroll';
-
-export const dynamic = 'force-static';
-
-const faqs = [
-  { q: 'Q1. How can I stop hair loss?', a: 'Hair loss can be addressed with a combination of professional treatments and proper at-home care. We recommend our nourishing hair treatments and can advise on the best routine for your hair type during your visit.' },
-  { q: 'Q2. Can I wax if I have body acne?', a: 'We advise against waxing over active acne as it can spread bacteria and cause irritation. Our specialists can assess your skin and recommend the most suitable hair removal method for your skin condition.' },
-  { q: 'Q3. How to fix dry, weak nails?', a: 'Dry, weak nails benefit from regular moisturising with cuticle oil, a balanced diet rich in biotin, and avoiding harsh chemicals. Our nail care specialists offer strengthening treatments to help restore nail health.' },
-  { q: 'Q4. What services does Reena Beauty Salon offer?', a: 'We offer a comprehensive range of beauty services including hair styling, bridal and party makeup, facials, threading, waxing, manicures, pedicures, nail art, and body massage treatments.' },
-  { q: 'Q5. Do I need an appointment or can I walk in?', a: 'While we welcome walk-ins based on availability, we strongly recommend booking an appointment to ensure you receive your preferred time slot and dedicated specialist attention.' },
-];
-
-const services = ['Hair Styling', 'Bridal Makeup', 'Party Makeup', 'Facials', 'Threading', 'Waxing', 'Manicure', 'Pedicure', 'Nail Art', 'Body Massage'];
+import { motion, AnimatePresence } from 'framer-motion';
+import { MapPin, Phone, Mail, Clock, Send, CheckCircle2, MessageSquare, Instagram, ArrowRight, ShieldCheck, Star } from 'lucide-react';
+import FAQAccordion from '@/components/FAQAccordion';
 
 export default function ContactPage() {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({ name: '', email: '', phone: '', service: '', date: '', message: '' });
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    service: '',
+    date: '',
+    message: '',
+  });
+
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
+  const validate = () => {
+    const newErrors: Record<string, string> = {};
+    if (!formData.name || formData.name.length < 2) newErrors.name = 'Name must be at least 2 characters.';
+    if (!formData.email || !/^\S+@\S+\.\S+$/.test(formData.email)) newErrors.email = 'Invalid email address.';
+    if (!formData.phone || !/^((\+92)|(0092)|(03))\d{9}$/.test(formData.phone.replace(/[\s-]/g, ''))) {
+      newErrors.phone = 'Enter a valid Pakistani phone number.';
+    }
+    if (!formData.message || formData.message.length < 10) newErrors.message = 'Message must be at least 10 characters.';
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    if (validate()) {
+      setStatus('loading');
+      setTimeout(() => {
+        setStatus('success');
+        setFormData({ name: '', email: '', phone: '', service: '', date: '', message: '' });
+      }, 1500);
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { id, value } = e.target;
+    setFormData((prev) => ({ ...prev, [id]: value }));
+    if (errors[id]) setErrors((prev) => ({ ...prev, [id]: '' }));
+  };
+
+  const faqItems = [
+    {
+      question: 'How far in advance should I book my bridal appointment?',
+      answer: 'We recommend booking bridal appointments at least 1–3 months in advance to secure your preferred date and allow time for consultations.',
+    },
+    {
+      question: 'Do you offer consultations before major hair transformations?',
+      answer: 'Yes, we provide personalized consultations to discuss your desired look, hair condition, and suitable treatments.',
+    },
+    {
+      question: 'What is your cancellation policy?',
+      answer: 'We kindly request at least 24 hours’ notice for cancellations or rescheduling to help us accommodate other clients.',
+    },
+    {
+      question: 'Are your products safe for sensitive skin?',
+      answer: 'Absolutely. We use high-quality and skin-friendly products, and our team carefully considers allergies before treatments.',
+    },
+  ];
+
+  const fadeInUp = {
+    initial: { opacity: 0, y: 30 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+    transition: { duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] as any }
   };
 
   return (
-    <>
-      {/* Hero */}
-      <section style={{ position: 'relative', height: '380px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'url(https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=1920&q=80)', backgroundSize: 'cover', backgroundPosition: 'center' }} />
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(44, 24, 16, 0.60) 0%, rgba(44, 24, 16, 0.50) 100%)' }} />
-        <AnimateOnScroll style={{ position: 'relative', textAlign: 'center', padding: '40px 24px 0' }}>
-          <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(34px, 5vw, 54px)', fontWeight: 500, color: 'white', marginBottom: '14px', textShadow: '0 2px 16px rgba(0,0,0,0.15)' }}>
-            Contact Us
-          </h1>
-          <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.85)', lineHeight: 1.7, maxWidth: '500px', margin: '0 auto' }}>
-            We&apos;d Love to Hear From You. Your journey to a tranquil sanctuary begins here. Drop us a message, and our team will get back to you shortly.
-          </p>
-        </AnimateOnScroll>
+    <main className="pt-[72px] bg-background">
+      {/* Page Hero - Increased padding and added animated star */}
+      <section className="relative w-full py-32 md:py-48 px-6 md:px-20 flex flex-col items-center justify-center text-center overflow-hidden bg-[#4a5240]">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="max-w-4xl mx-auto z-10"
+        >
+
+          <motion.h1 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="font-display-lg text-4xl sm:text-5xl md:text-8xl text-white mb-10"
+          >
+            Get in <span className="italic font-decorative-accent text-[#c1cab3]">Touch</span>
+          </motion.h1>
+
+          <motion.p 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="font-body-md text-lg md:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed"
+          >
+            Whether you have a question about our services, pricing, or want to book an appointment, our sanctuary team is ready to assist you.
+          </motion.p>
+        </motion.div>
+        
+        {/* Background Accents */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2"></div>
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#c1cab3]/10 rounded-full blur-[80px] translate-y-1/2 -translate-x-1/2"></div>
       </section>
 
-      {/* Form + Info */}
-      <section style={{ backgroundColor: 'var(--color-cream)', padding: '80px 24px' }}>
-        <div style={{ maxWidth: '1100px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '60px' }}>
-          {/* Form */}
-          <AnimateOnScroll direction="left">
-            <div style={{ backgroundColor: 'white', padding: '40px', boxShadow: '0 4px 24px rgba(0,0,0,0.06)', borderRadius: '2px' }}>
-              <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: '24px', fontWeight: 500, color: 'var(--color-dark)', marginBottom: '28px' }}>
-                Send a Message
-              </h2>
-              {submitted ? (
-                <div style={{ textAlign: 'center', padding: '40px 0' }}>
-                  <div style={{ fontSize: '40px', marginBottom: '16px' }}>✉️</div>
-                  <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '22px', color: 'var(--color-dark)', marginBottom: '10px' }}>Message Sent!</h3>
-                  <p style={{ fontSize: '14px', color: 'var(--color-text)' }}>Thank you for reaching out. We&apos;ll get back to you shortly.</p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-                    <div>
-                      <label style={{ fontSize: '11px', fontWeight: 500, color: 'var(--color-dark)', letterSpacing: '0.06em', display: 'block', marginBottom: '6px' }}>FULL NAME *</label>
-                      <input required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="Eg: Saima Hayat" style={{ width: '100%', padding: '11px 14px', border: '1px solid var(--color-border)', fontFamily: 'var(--font-sans)', fontSize: '13px', color: 'var(--color-dark)', outline: 'none', backgroundColor: 'transparent' }} />
-                    </div>
-                    <div>
-                      <label style={{ fontSize: '11px', fontWeight: 500, color: 'var(--color-dark)', letterSpacing: '0.06em', display: 'block', marginBottom: '6px' }}>EMAIL ADDRESS *</label>
-                      <input type="email" required value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder="Eg: saima@abc.com" style={{ width: '100%', padding: '11px 14px', border: '1px solid var(--color-border)', fontFamily: 'var(--font-sans)', fontSize: '13px', color: 'var(--color-dark)', outline: 'none', backgroundColor: 'transparent' }} />
-                    </div>
-                  </div>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-                    <div>
-                      <label style={{ fontSize: '11px', fontWeight: 500, color: 'var(--color-dark)', letterSpacing: '0.06em', display: 'block', marginBottom: '6px' }}>CONTACT NO. *</label>
-                      <input required value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} placeholder="Eg: +92 500 420 5000" style={{ width: '100%', padding: '11px 14px', border: '1px solid var(--color-border)', fontFamily: 'var(--font-sans)', fontSize: '13px', color: 'var(--color-dark)', outline: 'none', backgroundColor: 'transparent' }} />
-                    </div>
-                    <div>
-                      <label style={{ fontSize: '11px', fontWeight: 500, color: 'var(--color-dark)', letterSpacing: '0.06em', display: 'block', marginBottom: '6px' }}>SELECT THE SERVICE</label>
-                      <select value={form.service} onChange={(e) => setForm({ ...form, service: e.target.value })} style={{ width: '100%', padding: '11px 14px', border: '1px solid var(--color-border)', fontFamily: 'var(--font-sans)', fontSize: '13px', color: form.service ? 'var(--color-dark)' : '#999', outline: 'none', backgroundColor: 'white', appearance: 'none', backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'12\' height=\'12\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23555\' stroke-width=\'2\'%3E%3Cpolyline points=\'6 9 12 15 18 9\'%3E%3C/polyline%3E%3C/svg%3E")', backgroundRepeat: 'no-repeat', backgroundPosition: 'right 12px center' }}>
-                        <option value="">Select the service</option>
-                        {services.map((s) => <option key={s} value={s}>{s}</option>)}
-                      </select>
-                    </div>
-                  </div>
-                  <div>
-                    <label style={{ fontSize: '11px', fontWeight: 500, color: 'var(--color-dark)', letterSpacing: '0.06em', display: 'block', marginBottom: '6px' }}>BOOKING DATE</label>
-                    <input type="date" value={form.date} onChange={(e) => setForm({ ...form, date: e.target.value })} style={{ width: '100%', padding: '11px 14px', border: '1px solid var(--color-border)', fontFamily: 'var(--font-sans)', fontSize: '13px', color: 'var(--color-dark)', outline: 'none', backgroundColor: 'transparent' }} />
-                  </div>
-                  <div>
-                    <label style={{ fontSize: '11px', fontWeight: 500, color: 'var(--color-dark)', letterSpacing: '0.06em', display: 'block', marginBottom: '6px' }}>MESSAGE</label>
-                    <textarea value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} placeholder="You can ask any query" rows={4} style={{ width: '100%', padding: '11px 14px', border: '1px solid var(--color-border)', fontFamily: 'var(--font-sans)', fontSize: '13px', color: 'var(--color-dark)', outline: 'none', backgroundColor: 'transparent', resize: 'vertical' }} />
-                  </div>
-                  <button type="submit" className="btn-primary" style={{ alignSelf: 'flex-start', marginTop: '8px' }}>
-                    SUBMIT REQUEST
-                  </button>
-                </form>
-              )}
-            </div>
-          </AnimateOnScroll>
+      {/* Main Content: Form & Info Card - Fixed overlap and increased vertical space */}
+      <section className="pb-32 md:pb-48 px-6 md:px-20 max-w-container-max mx-auto relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch -mt-16 md:-mt-40">
+          {/* Form Card */}
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+            className="lg:col-span-7 bg-white p-8 md:p-16 shadow-2xl rounded-[2.5rem] md:rounded-[3rem] border border-outline-variant/5"
 
-          {/* Info */}
-          <AnimateOnScroll direction="right">
-            <div>
-              <div style={{ marginBottom: '36px' }}>
-                <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '22px', fontWeight: 500, color: 'var(--color-dark)', marginBottom: '16px' }}>Location</h3>
-                <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
-                  <MapPin size={16} color="var(--color-maroon)" style={{ marginTop: '2px', flexShrink: 0 }} />
-                  <p style={{ fontSize: '14px', color: 'var(--color-text)', lineHeight: 1.7 }}>
-                    G-11 MARKAZ, Silver Plaza<br />1st Floor, Islamabad, Pakistan
+          >
+            <div className="flex items-center gap-4 mb-12">
+               <div className="w-12 h-12 bg-primary/5 rounded-2xl flex items-center justify-center text-primary">
+                  <MessageSquare className="w-6 h-6" />
+               </div>
+               <h2 className="font-display-lg text-3xl md:text-5xl text-[#333b2a]">Send an Inquiry</h2>
+            </div>
+            
+            <form className="space-y-12" onSubmit={handleSubmit}>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div className="space-y-3">
+                  <label className="font-label-caps text-[10px] text-on-surface-variant/60 uppercase tracking-widest px-1" htmlFor="name">Full Name</label>
+                  <input
+                    className={`minimal-input font-body-md text-primary w-full py-4 ${errors.name ? 'border-red-400' : ''}`}
+                    id="name"
+                    placeholder="E.g. Aisha Khan"
+                    type="text"
+                    value={formData.name}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="space-y-3">
+                  <label className="font-label-caps text-[10px] text-on-surface-variant/60 uppercase tracking-widest px-1" htmlFor="email">Email Address</label>
+                  <input
+                    className={`minimal-input font-body-md text-primary w-full py-4 ${errors.email ? 'border-red-400' : ''}`}
+                    id="email"
+                    placeholder="aisha@example.pk"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                  />
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div className="space-y-3">
+                  <label className="font-label-caps text-[10px] text-on-surface-variant/60 uppercase tracking-widest px-1" htmlFor="phone">Phone Number</label>
+                  <input
+                    className={`minimal-input font-body-md text-primary w-full py-4 ${errors.phone ? 'border-red-400' : ''}`}
+                    id="phone"
+                    placeholder="03XX XXXXXXX"
+                    type="tel"
+                    value={formData.phone}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="space-y-3">
+                  <label className="font-label-caps text-[10px] text-on-surface-variant/60 uppercase tracking-widest px-1" htmlFor="service">Interested Service</label>
+                  <select
+                    className="minimal-input font-body-md text-primary w-full py-4 bg-transparent cursor-pointer"
+                    id="service"
+                    value={formData.service}
+                    onChange={handleChange}
+                  >
+                    <option value="">Select a Service</option>
+                    <option value="hair">Hair Styling & Color</option>
+                    <option value="skin">Skincare & Facials</option>
+                    <option value="bridal">Bridal Makeup</option>
+                    <option value="nails">Nail Art & Care</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="space-y-3">
+                <label className="font-label-caps text-[10px] text-on-surface-variant/60 uppercase tracking-widest px-1" htmlFor="message">Your Message</label>
+                <textarea
+                  className={`minimal-input font-body-md text-primary w-full py-4 resize-none ${errors.message ? 'border-red-400' : ''}`}
+                  id="message"
+                  placeholder="Tell us about your beauty goals..."
+                  rows={5}
+                  value={formData.message}
+                  onChange={handleChange}
+                ></textarea>
+              </div>
+
+              <button
+                className="btn-primary w-full md:w-auto mt-4"
+                type="submit"
+                disabled={status === 'loading'}
+              >
+                {status === 'loading' ? 'Processing...' : 'Book My Consultation'}
+              </button>
+
+              <AnimatePresence>
+                {status === 'success' && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="p-8 bg-green-50 text-green-700 border border-green-100 rounded-[2rem] flex items-center gap-4"
+                  >
+                    <CheckCircle2 className="w-6 h-6" />
+                    <p className="font-body-md font-medium">Inquiry received! We'll contact you shortly.</p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </form>
+          </motion.div>
+
+          {/* Info Card */}
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+            className="lg:col-span-5 bg-[#333b2a] p-8 md:p-16 rounded-[2.5rem] md:rounded-[3rem] text-white relative overflow-hidden flex flex-col justify-between shadow-2xl"
+
+          >
+            <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2"></div>
+            
+            <div className="relative z-10 space-y-16">
+              <div className="space-y-10">
+                <h3 className="font-display-lg text-3xl md:text-5xl">Our <span className="italic font-decorative-accent text-[#c1cab3]">Sanctuary</span></h3>
+                <div className="space-y-8">
+                  <div className="flex items-start gap-6 group cursor-pointer">
+                    <div className="w-12 h-12 bg-white/10 rounded-2xl flex flex-shrink-0 items-center justify-center group-hover:bg-secondary-fixed group-hover:text-primary transition-all duration-500">
+                      <MapPin className="w-6 h-6" />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="font-label-caps text-[10px] text-white/50 uppercase tracking-[0.2em] mb-2">Location</p>
+                      <p className="font-body-md text-lg leading-relaxed">G-11/MARKAZ, Silver Plaza, 1st Floor, Islamabad, Pakistan</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-6 group cursor-pointer">
+                    <div className="w-12 h-12 bg-white/10 rounded-2xl flex flex-shrink-0 items-center justify-center group-hover:bg-secondary-fixed group-hover:text-primary transition-all duration-500">
+                      <Phone className="w-6 h-6" />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="font-label-caps text-[10px] text-white/50 uppercase tracking-[0.2em] mb-2">WhatsApp / Call</p>
+                      <p className="font-body-md text-lg">0325 9117272</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-6 group cursor-pointer">
+                    <div className="w-12 h-12 bg-white/10 rounded-2xl flex flex-shrink-0 items-center justify-center group-hover:bg-secondary-fixed group-hover:text-primary transition-all duration-500">
+                      <Mail className="w-6 h-6" />
+                    </div>
+                    <div className="min-w-0">
+                      <p className="font-label-caps text-[10px] text-white/50 uppercase tracking-[0.2em] mb-2">Email</p>
+                      <p className="font-body-md text-lg break-all">bookings@reenabeauty.pk</p>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div className="space-y-10">
+                <div className="flex items-center gap-4">
+                   <div className="w-8 h-[1px] bg-secondary-fixed"></div>
+                   <h4 className="font-label-caps text-xs uppercase tracking-[0.3em]">Opening Hours</h4>
+                </div>
+                <div className="space-y-6 font-body-md text-lg">
+                  <div className="flex justify-between border-b border-white/10 pb-5">
+                    <span className="text-white/70">Mon - Sun</span>
+                    <span className="font-bold text-secondary-fixed">10:00 am – 08:00 pm</span>
+                  </div>
+                  <p className="text-[10px] uppercase tracking-[0.4em] text-white/30 flex items-center gap-3">
+                    <ShieldCheck className="w-4 h-4" /> Medical Grade Sanitization
                   </p>
                 </div>
               </div>
-
-              <div style={{ marginBottom: '36px' }}>
-                <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '22px', fontWeight: 500, color: 'var(--color-dark)', marginBottom: '16px' }}>Get in Touch</h3>
-                <div style={{ display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '10px' }}>
-                  <Phone size={14} color="var(--color-maroon)" />
-                  <span style={{ fontSize: '14px', color: 'var(--color-text)' }}>T: 0315335766</span>
-                </div>
-                <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-                  <Mail size={14} color="var(--color-maroon)" />
-                  <a href="mailto:Bookings@reenabeautysalon.pk" style={{ fontSize: '14px', color: 'var(--color-text)', textDecoration: 'none' }}>Bookings@reenabeautysalon.pk</a>
-                </div>
-              </div>
-
-              <div style={{ backgroundColor: 'var(--color-pink-light)', padding: '20px', borderRadius: '2px' }}>
-                <div style={{ display: 'flex', gap: '8px', alignItems: 'center', marginBottom: '12px' }}>
-                  <Clock size={15} color="var(--color-maroon)" />
-                  <h4 style={{ fontFamily: 'var(--font-sans)', fontSize: '14px', fontWeight: 600, color: 'var(--color-dark)' }}>Hours</h4>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', color: 'var(--color-text)' }}>
-                  <span>Mon to Sun</span>
-                  <span style={{ fontWeight: 500 }}>10:00 am – 08:00 pm</span>
-                </div>
-              </div>
             </div>
-          </AnimateOnScroll>
+            
+            <div className="relative z-10 pt-20">
+               <a 
+                 href="https://www.instagram.com/reena_beauty_salon?igsh=MWo4MDFucDlua3VnOA%3D%3D&utm_source=qr" 
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 className="flex items-center gap-4 text-white/40 hover:text-secondary-fixed transition-all duration-500 group"
+               >
+                  <Instagram className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                  <span className="font-label-caps text-[10px] uppercase tracking-[0.3em]">Follow @reena_beauty_salon</span>
+               </a>
+
+            </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Map Placeholder */}
-      <section style={{ height: '300px', backgroundColor: '#E8E0DA', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'url(https://api.mapbox.com/styles/v1/mapbox/light-v11/static/73.0479,33.6844,13,0/1200x300@2x?access_token=pk.placeholder)', backgroundSize: 'cover', backgroundPosition: 'center', filter: 'grayscale(30%) brightness(0.95)' }} />
-        <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
-          <MapPin size={32} color="var(--color-maroon)" />
-          <p style={{ fontFamily: 'var(--font-sans)', fontSize: '13px', color: 'var(--color-dark)', fontWeight: 500 }}>G-11 MARKAZ, Silver Plaza, Islamabad</p>
-          <a href="https://maps.google.com/?q=G-11+MARKAZ+Silver+Plaza+Islamabad" target="_blank" rel="noopener noreferrer" className="btn-outline" style={{ marginTop: '8px', fontSize: '11px', padding: '8px 18px' }}>
-            Open in Maps
-          </a>
-        </div>
-      </section>
+      {/* Interactive Map - Added top margin for breathing room */}
+      <section className="px-6 md:px-20 pb-32 md:pb-48">
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="w-full h-[400px] md:h-[600px] relative rounded-[2.5rem] md:rounded-[4rem] overflow-hidden shadow-2xl border-[8px] md:border-[12px] border-white"
 
-      {/* FAQ */}
-      <section style={{ backgroundColor: 'var(--color-cream)', padding: '80px 24px' }}>
-        <div style={{ maxWidth: '760px', margin: '0 auto' }}>
-          <AnimateOnScroll style={{ textAlign: 'center', marginBottom: '48px' }}>
-            <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(26px, 3vw, 40px)', fontWeight: 500, color: 'var(--color-dark)', marginBottom: '12px' }}>
-              Frequently Asked Questions
-            </h2>
-            <p style={{ fontSize: '14px', color: 'var(--color-text)' }}>Everything you need to know before your visit.</p>
-          </AnimateOnScroll>
-          <div>
-            {faqs.map((faq, i) => (
-              <AnimateOnScroll key={faq.q} delay={i * 60}>
-                <div style={{ borderBottom: '1px solid var(--color-border)' }}>
-                  <button
-                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                    style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 0', background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left' }}
-                  >
-                    <span style={{ fontFamily: 'var(--font-sans)', fontSize: '14px', fontWeight: 500, color: 'var(--color-dark)', flex: 1, paddingRight: '16px' }}>{faq.q}</span>
-                    {openFaq === i ? <Minus size={16} color="var(--color-maroon)" /> : <Plus size={16} color="var(--color-dark)" />}
-                  </button>
-                  {openFaq === i && (
-                    <div style={{ paddingBottom: '20px' }}>
-                      <p style={{ fontSize: '13px', color: 'var(--color-text)', lineHeight: 1.8 }}>{faq.a}</p>
-                    </div>
-                  )}
-                </div>
-              </AnimateOnScroll>
-            ))}
+        >
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3321.46460334865!2d73.0116664!3d33.6666667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfbe3874313f83%3A0xc30403328e29a96e!2sG-11%20Markaz%20Islamabad%2C%20Pakistan!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s"
+            className="w-full h-full border-0 grayscale hover:grayscale-0 transition-all duration-1000"
+            allowFullScreen
+            loading="lazy"
+          ></iframe>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none">
+            <div className="bg-[#333b2a] text-white p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] shadow-2xl flex items-center gap-4 md:gap-6 border border-white/20 backdrop-blur-2xl">
+              <div className="w-12 h-12 bg-[#c1cab3] rounded-2xl flex items-center justify-center text-[#333b2a] shadow-lg">
+                 <MapPin className="w-7 h-7" />
+              </div>
+              <div>
+                <p className="font-label-caps text-[10px] uppercase tracking-[0.4em] text-[#c1cab3] mb-1">Visit Our Sanctuary</p>
+                <p className="font-body-md font-bold text-xl">G-11 Markaz, Islamabad</p>
+              </div>
+              </div>
           </div>
+        </motion.div>
+      </section>
+
+      {/* FAQ Section - Consistent padding */}
+      <section className="py-32 md:py-48 bg-[#f6f3f0] px-6 md:px-20">
+        <div className="max-w-container-max mx-auto">
+          <motion.div {...fadeInUp} className="text-center mb-24">
+
+            <h2 className="font-display-lg text-3xl md:text-7xl text-[#333b2a] mb-8">Common <span className="italic font-decorative-accent text-secondary">Inquiries</span></h2>
+
+            <p className="font-body-md text-lg md:text-xl text-on-surface-variant max-w-2xl mx-auto leading-relaxed">Everything you need to know about our sanctuary rituals and policies.</p>
+          </motion.div>
+          <FAQAccordion items={faqItems} />
         </div>
       </section>
-    </>
+    </main>
   );
 }

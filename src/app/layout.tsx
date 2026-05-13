@@ -1,28 +1,13 @@
-import type { Metadata, Viewport } from 'next';
 import './globals.css';
+import type { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import WhatsAppFAB from '@/components/WhatsAppFAB';
 
-export const viewport: Viewport = {
-  width: 'device-width',
-  initialScale: 1,
-  maximumScale: 5,
-};
 
 export const metadata: Metadata = {
-  title: {
-    default: 'Reena Beauty Salon — Islamabad\'s Luxury Beauty Sanctuary',
-    template: '%s | Reena Beauty Salon',
-  },
-  description: 'Reena Beauty Salon is your trusted beauty sanctuary in Islamabad for style, luxury and personalised care. Book your appointment today.',
-  keywords: ['beauty salon', 'Islamabad', 'hair styling', 'bridal makeup', 'facials', 'luxury salon', 'Reena Beauty Salon'],
-  openGraph: {
-    title: 'Reena Beauty Salon — Islamabad\'s Luxury Beauty Sanctuary',
-    description: 'Your exclusive sanctuary for luxury & pampering in Islamabad.',
-    siteName: 'Reena Beauty Salon',
-    locale: 'en_PK',
-    type: 'website',
-  },
+  title: 'Reena Beauty Salon',
+  description: 'Your trusted beauty sanctuary in Islamabad for style, luxury, and personalized care.',
 };
 
 export default function RootLayout({
@@ -31,18 +16,31 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link
-          href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap"
+          href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400..700;1,400..700&family=Pacifico&family=Playfair+Display:ital,wght@0,400..800;1,400..800&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body className="antialiased">
+      <body>
         <Navbar />
-        <main>{children}</main>
+        <div className="overflow-x-hidden">
+          {children}
+        </div>
+        <WhatsAppFAB />
         <Footer />
       </body>
+
+
+
+
+
     </html>
+
   );
 }
