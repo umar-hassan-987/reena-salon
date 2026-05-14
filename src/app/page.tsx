@@ -169,7 +169,7 @@ export default function HomePage() {
             <img
               alt="Spa Treatment"
               className="w-full h-full object-cover"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuD475GieQP-XYDF1jvL4cL5YHvgfOdybIZQE_TElREQ2K0re6k0lc21ysW7gEY5kKA-k8zzDLCHEdTUqBZlBqLY5S5RT5MqNj8pMRdiJEnFicI2s6TXey30kXZ5qW0pZf_9jU9D5fTJf9CpS8J-cOej0ldxgsYaYcQ3xpB32wAbI4xDGavfx9FHwL7qN1-0cSMvNcxzTnsEH2t1ibQ_rVVy6Ii7_KMHxgOQbD74PDV5mRHXVmGh8gF8IsnYvilicqR4eOa9cd53NNM"
+              src="/images/modals/dreamgirl.webp"
             />
             <div className="absolute inset-0 bg-[#333b2a]/10 mix-blend-overlay"></div>
           </motion.div>
@@ -217,10 +217,10 @@ export default function HomePage() {
                viewport={{ once: true }}
              >
                <ComparisonSlider 
-                 beforeImage="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&q=80"
-                 afterImage="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=80"
-                 beforeLabel="Natural Look"
-                 afterLabel="Party Glam"
+                 beforeImage="/images/modals/bride/before.png"
+                 afterImage="/images/modals/bride/after.png"
+                 beforeLabel="Before"
+                 afterLabel="After"
                />
              </motion.div>
              <div className="space-y-8">
@@ -435,12 +435,12 @@ export default function HomePage() {
             <h2 className="font-display-lg text-3xl md:text-6xl text-[#333b2a] mb-4">Our Sanctuary</h2>
 
             <p className="font-body-md text-on-surface-variant flex items-center justify-center md:justify-start gap-2">
-              <Instagram className="w-4 h-4 text-[#59614e]" /> @reenabeauty
+              <Instagram className="w-4 h-4 text-[#59614e]" /> @reena_beauty_salon
             </p>
           </div>
           <a
             className="font-label-caps text-[#59614e] uppercase tracking-[0.2em] items-center gap-2 border-b border-[#59614e]/30 hover:border-[#59614e] transition-all pb-2 text-[10px]"
-            href="https://instagram.com/reenabeauty" target="_blank"
+            href="https://www.instagram.com/reena_beauty_salon?igsh=MWo4MDFucDlua3VnOA%3D%3D&utm_source=qr" target="_blank"
           >
             Visit Our Instagram
           </a>

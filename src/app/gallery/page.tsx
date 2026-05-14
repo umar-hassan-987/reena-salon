@@ -218,9 +218,9 @@ export default function GalleryPage() {
           </p>
           <a
             className="btn-primary scale-110"
-            href="https://instagram.com/reenabeauty" target="_blank"
+            href="https://www.instagram.com/reena_beauty_salon?igsh=MWo4MDFucDlua3VnOA%3D%3D&utm_source=qr" target="_blank"
           >
-            <span>Follow @reenabeauty</span>
+            <span>Follow @reena_beauty_salon</span>
           </a>
         </motion.div>
       </section>
