@@ -8,45 +8,46 @@ import ComparisonSlider from '@/components/ComparisonSlider';
 export default function GalleryPage() {
   const [activeCategory, setActiveCategory] = useState('All');
   const [selectedImage, setSelectedImage] = useState<null | { src: string; alt: string; cat: string; dataAlt?: string }>(null);
+  const imageBasePath = '/images/combined';
 
   const categories = ['All', 'Bridal', 'Hair', 'Skin & Facials', 'Nails', 'Makeup'];
 
   const images = [
     {
-      src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDLDHI1q2xflnI1qjVyy17jPwtPhPZak_AdM_fU6eJVKLSYKJqFYml1-rY7c2zNj1hAO-Ch0NICkZrHqqurQqTpUynVykK681WWADcxq6s7wtPqc_hMsqv0TWs8in_3Yn1yMravxXykvSC0DfpwToWL8EZcwmWVPskaXxPvyYju9yHFcfyTAPoUWGnVsOxzhlOyZmSCPA3jBe7wY1bSKuDzOE8I00YZSLFW8ecWDRsziJHxCLqIXv42kOM85B_S-dWF-KdsXH5O-AE',
-      alt: 'Gallery Image',
+      src: `${imageBasePath}/realistic_high_quality_close_up_portrait_of_a_pakistani_woman_with_flawless.png`,
+      alt: 'Close-up portrait of a Pakistani woman with flawless, glowing skin and a minimalist makeup look.',
       cat: 'Bridal',
-      dataAlt: 'A close-up portrait of a woman with flawless, glowing skin, showcasing a minimalist makeup look. The lighting is soft and natural, emphasizing a dewy finish and subtle warm tones.',
+      dataAlt: 'A close-up portrait of a Pakistani woman with flawless, glowing skin, showcasing a minimalist makeup look. The lighting is soft and natural, emphasizing a dewy finish and subtle warm tones.',
     },
     {
-      src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBKEhyZKO1g7Q3lV_SwLd2LZ9CABhV8G84wRxrrwOUekygXtmNd2QLZ_acxAyNneTLIauAELh96BDL0QhEYosqXluX5gZHHwigLXyFmk0U6s0i5RRwDeNEkl-NB0oJ_4LCVkiQFPA5H_VTA7kapMQJ3sV157m5mMj62Nl9o6AlOivuNRa8zWRJkZrWbdLfHoS1NVwdGD_O_TTIq-n4OHCSldkcZiilZu9BYzCdM6k4_jIBfZsMw3PgFJ7n3URnajYEkgHCQHtMMmgM',
-      alt: 'Gallery Image',
+      src: `${imageBasePath}/realistic_high_quality_sophisticated_shot_of_a_pakistani_woman_with_perfectly.png`,
+      alt: 'A sophisticated shot of a Pakistani woman with perfectly styled, voluminous brunette hair.',
       cat: 'Hair',
-      dataAlt: 'A sophisticated shot of a woman with perfectly styled, voluminous brunette hair, cascading smoothly.',
+      dataAlt: 'A sophisticated shot of a Pakistani woman with perfectly styled, voluminous brunette hair, cascading smoothly.',
     },
     {
-      src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC-2JcHUA0tkqiCOXCfihEP92sOHdoZPX-pG4miL378hFz8NamySQi9I_kse6j4zNmWQix35ltnK4xNam4TZWVyzatWihxNmGND-c1ScpEGv7c2Ev0TH5eN_wdZqe0agsirXt51qH1wT7frZqvgPJUpU6a-Wu9K_BJvq3BZEWnCi0Vpw704BC5C2KbuHOXplxWXzpsboJlmro6ZggV9er9pR6-a9Q_MqxgSQrlmqnj5xG7KDd4rcviaXBi-D11YTx-SZaFXocvYGNI',
-      alt: 'Gallery Image',
+      src: `${imageBasePath}/realistic_high_quality_macro_beauty_shot_focusing_on_expertly_manicured_nails.png`,
+      alt: 'A macro beauty shot focusing on expertly manicured nails in a soft champagne tone.',
       cat: 'Nails',
       dataAlt: 'A macro beauty shot focusing on expertly manicured nails painted in a soft, neutral champagne tone.',
     },
     {
-      src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAY6DDc8e1H9TwGuY2x4GtJ4PDefLxdCs_BGoZjU16pxSFBgaRH5srqLfZ-f_I2rMWIfANIrIlRrW53250vGEBJzUNNPaIn79YA6d4gvQEPTJuGJtz7XFkCNilFpUt5J1s6a5daA0M2Rhut3hjwH5sWx9mADaHBPoKUsy-39jX-FPRbYtUmytW37ZYu0Fw9dw08IFkjmQwwp733z-ue9LUwjsOaoxnpfCWalWaYXF6pr7ex9XXNugqd-Y8Tc4OHAv6_nLZfPLnJNCY',
-      alt: 'Gallery Image',
+      src: `${imageBasePath}/realistic_high_quality_tranquil_scene_showing_a_facial_treatment_in_progress.png`,
+      alt: 'A tranquil scene showing a facial treatment in progress with a hydrating mask applied.',
       cat: 'Skin & Facials',
-      dataAlt: 'A tranquil scene showing a facial treatment in progress. A client is resting with a hydrating mask applied.',
+      dataAlt: 'A tranquil scene showing a facial treatment in progress. A Pakistani client is resting with a hydrating mask applied.',
     },
     {
-      src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDc0Y0ahSdkl_ez7ItOC8k1FNcfQ7ol19qEeHH9detoNcWkQw2-LZ-w975VGssCT9ynD5BYAcD8rOn-dOH5Q1It-gSmu1mvczMcvkQXXaQoeSJcG_qfWysCelBpNmh2R1UApU3O5uKLOtZeorYY-4w0JypcPqe6UYDFBnmHW3odL7MofX5Z68wox5MHGpvyGqtoe12w6ua_wmjYUJWuDILMacWKIBvetZSrk0ncZ5DEbb65MlL9l1pL179W7m30fURwT2DfV5zWfzg',
-      alt: 'Gallery Image',
+      src: `${imageBasePath}/realistic_high_quality_striking_profile_portrait_of_a_pakistani_woman.png`,
+      alt: 'A striking profile portrait of a Pakistani woman showcasing an elegant, modern makeup application.',
       cat: 'Makeup',
-      dataAlt: 'A striking profile portrait of a woman showcasing an elegant, modern makeup application.',
+      dataAlt: 'A striking profile portrait of a Pakistani woman showcasing an elegant, modern makeup application.',
     },
     {
-      src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDqI9oEHzrTfXzJeKsf9dZtENK-ox1YmimRHuzvvvQqAOWN_CVuwUifGf__e-IBS1nqIBDr_UwIHwRUIry3yTxO-KE9VZGba8IG2PCTKoOyomHcNELbG-u4K5aSEveGc9BLbVQEmFSF24X7kAfadv9JOMnoD9NoUD6PCVqnfsNEL4pPbdmKYeomvHBxJVRS-wPvUFWIW1AFu9hDgqx09L_jPmVsOV9g9Mh03fwJVDpXvwzLN2E4lqfuTCVMjrBnXgZhQgVkNe46t3Y',
-      alt: 'Gallery Image',
+      src: `${imageBasePath}/realistic_high_quality_bridal_styling_shot_featuring_a_pakistani_woman_with_an.png`,
+      alt: 'A beautiful bridal styling shot featuring a Pakistani woman with an intricate, softly swept updo and pearl accessories.',
       cat: 'Bridal',
-      dataAlt: 'A beautiful bridal styling shot featuring a woman with an intricate, softly swept updo adorned with tiny pearl accessories.',
+      dataAlt: 'A beautiful bridal styling shot featuring a Pakistani woman with an intricate, softly swept updo adorned with tiny pearl accessories.',
     },
   ];
 
@@ -54,20 +55,20 @@ export default function GalleryPage() {
     {
       title: 'Color Correction & Gloss',
       desc: 'Restoring vitality and rich tones to previously dull hair.',
-      after: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCAwIenWtu5X-ChWvVLm1G3vdvKegv0PO8OYEwI4UNB2HHhuHvut37ZaANXtRBOyLiIAjXgNYW791riUGmzIY9Md_-8qEbynvPQgaSVaWFjgs_NxHseuiKmS4Cdnk-1M062s1kKVms9RWichVjTE-WX5oFlMzTTe8WnP2IwYrPdoD3b6tEUu-rNGGLfaSLE5F6s5UZS2DIs_bConz1EIbLRe6npfXdWMhLsB-d6BqNoUd0L8FkVps467IFelB7yRjs3L46HnqD-dCg',
-      before: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC8N5uSkK2Pa5b1vGS42-ifAkuH9IHR4oU2vaSDV1VwCsBE_ktx1cYY1vIGIk80UJNIQmzPi3OKLAu_jDvr0J0njqCQEU--nZS9VYMaBczo4OxGg5FBBCDRw71slXmdweoOEgb6GyXYOSyq8_Y3yW3kcbaYB5AJkAaAVdRHGZApdcpMewudcAEOvXhcHnfQym4B-HZ50ZQDneZe3LAi0He7QT_TZgnrLK9twU-_oVtXUJZa-jq3E3FmhpZ_Qd6-95QgqJTN4Id1JjA',
+      after: `${imageBasePath}/realistic_hair_transformation_after_shot_pakistani_woman_with_vibrant_rich.png`,
+      before: `${imageBasePath}/realistic_hair_transformation_before_shot_pakistani_woman_with_dull_flat_and.png`,
     },
     {
       title: 'Signature Hydration Facial',
       desc: 'Deep cleansing and moisture infusion for an instant glow.',
-      after: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC2uvfcvXGwp7JMOYkBYYm3SkF_GtBg4KRYn5p_kHoEE9wYK9qw6WQDvLalGelmM3hHWLf08bESL3K7XTx_akDfgs44W724K52IC9OKgBRkYMX5PIRXK9pNhItldJHxObGYWsUfLg1OhO9A3xrWXJRTzGxnSPB2iT8k9v92Fp-WobJBAqDdEEnkh_mitgafqMHGGv81fJAjt6620o-b1xUgL6UeUsH135gxedmCqhYDne1lH519i5KbiK6vyZTWmd9IJADqH2mCuJo',
-      before: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDuuN9YYcfWDxeX5ORkO8kzsBXjkPBEnhl9-d6YQwS4YYM1eDvTa3-Hp4jCcJZo278jV5Zlnc9TjOdZq9I81gjKBGhT8SoIhX2l-GZAJj4L-SjIEko0tEaTAQ964c1wOKHnwJzVRat55PFbOc1gSK6daVIzAIHvAnzqHtHd2qokcnvnO6i6etkxyslnqmM4CnHeTRj_LlsIDWVUjZ30qGWsvNx2taqxuiSRbXGJT2x4ArUXj2qyLNWE9h9Q613MsyhZIlr7FhPJnwU',
+      after: `${imageBasePath}/realistic_skin_transformation_after_shot_close_up_of_a_pakistani_woman_s_face.png`,
+      before: `${imageBasePath}/realistic_skin_transformation_before_shot_close_up_of_a_pakistani_woman_s_face.png`,
     },
     {
       title: 'Bridal Styling',
       desc: 'A complete, timeless bridal look that lasts all day.',
-      after: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBMyJGhd_xZ1Iz8EDOBaOVWu8O0JMBLTl-WVRdvJDsxlsgRNa2FbbZCOTGBUISryV_38SjxN3MDOefiP2n-t_uK1_imOtOeJPMDGgkrhSgqVf0_RAQ_55Yd1n6_1MUL0Ygo7haQxdYpwuGJzYoXBLA9sLXbtnYdSrWWuPraMQXbqTNe_0jVXt6UvOt65FhBWucPXjUMnpRTZOUGvg_hrtpuJLSJURbwpBLTbn3-vxTOmWgsDSHB_hxS4DsbBTDI3Vht_Kb8lobf-hQ',
-      before: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCBahmPhValzYhVoqJ7xWPA-DI2hoqqDkyLBc0Wf9nxhrWaeELaJU1gbYd9hcugkeGFRa6a8Nc740YeQSU3Uj96SBeIwfefbT06hxkI4qNLfgiGZJ79aXfojKuO-l_WwoUIvjQMjk-oBNQt5ibUGKnag62QN847CLVHwIJ56jWXYPuVOuM2TBBQTYrn57yjJFGDXKa-TJhhHs41vY2LxtqwbJcyIa3CkzX3MEPrvEJSNQTRGpTxIzzX4_vK1u_OitwqJK870bYnWyI',
+      after: `${imageBasePath}/realistic_bridal_transformation_after_shot_a_complete_timeless_pakistani_bridal.png`,
+      before: `${imageBasePath}/realistic_bridal_transformation_before_shot_a_pakistani_woman_with_a_natural.png`,
     },
   ];
 

@@ -116,6 +116,70 @@
     box-shadow: none;
     border-bottom-color: #59614e;
   }
+
+  .blog-content {
+    @apply font-body-md text-on-surface-variant;
+  }
+
+  .blog-content > * + * {
+    margin-top: 1.25rem;
+  }
+
+  .blog-content h1,
+  .blog-content h2,
+  .blog-content h3,
+  .blog-content h4 {
+    @apply font-display-lg font-bold text-primary leading-tight;
+  }
+
+  .blog-content h2 {
+    @apply text-2xl md:text-3xl lg:text-4xl mt-12 md:mt-16 mb-4 md:mb-6 pl-4 border-l-4 border-secondary-fixed;
+  }
+
+  .blog-content h3 {
+    @apply text-xl md:text-2xl mt-10 mb-3;
+  }
+
+  .blog-content p {
+    @apply text-base md:text-lg leading-8 md:leading-9 text-on-surface-variant;
+  }
+
+  .blog-content a {
+    @apply text-secondary font-semibold underline decoration-secondary/30 underline-offset-4 transition-colors hover:decoration-secondary;
+  }
+
+  .blog-content strong {
+    @apply text-primary font-semibold;
+  }
+
+  .blog-content figure {
+    @apply my-8 md:my-10;
+  }
+
+  .blog-content img {
+    @apply w-full rounded-2xl shadow-lg border border-outline-variant/10;
+  }
+
+  .blog-content figcaption {
+    @apply mt-3 text-sm italic text-on-surface-variant/70;
+  }
+
+  .blog-content ul,
+  .blog-content ol {
+    @apply my-6 pl-6 space-y-3;
+  }
+
+  .blog-content li {
+    @apply text-base md:text-lg leading-8 text-on-surface-variant;
+  }
+
+  .blog-content blockquote {
+    @apply my-8 pl-6 border-l-4 border-secondary-fixed italic text-on-surface-variant/80;
+  }
+
+  .blog-content hr {
+    @apply my-10 border-outline-variant/40;
+  }
 }
 
 /* Hide scrollbar for all browsers */

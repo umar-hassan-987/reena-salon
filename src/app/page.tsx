@@ -395,9 +395,9 @@ export default function HomePage() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {[
-            { name: "Sarah Ahmed", role: "Senior Stylist", img: "https://images.unsplash.com/photo-1594744803329-a584af1cae24?w=500&q=80" },
-            { name: "Fatima Khan", role: "Lead Makeup Artist", img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&q=80" },
-            { name: "Zainab Ali", role: "Esthetician", img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=500&q=80" }
+            { name: "Sarah Ahmed", role: "Senior Stylist", img: "/images/team/Sarah.png" },
+            { name: "Fatima Khan", role: "Lead Makeup Artist", img: "/images/team/Fatima.png" },
+            { name: "Zainab Ali", role: "Esthetician", img: "/images/team/Zainab.png" }
           ].map((artist, idx) => (
             <motion.div 
               key={idx}
