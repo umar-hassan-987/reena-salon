@@ -33,7 +33,7 @@ export default function AboutPage() {
           className="absolute inset-0 pointer-events-none"
         >
 
-          <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1600&q=80" className="w-full h-full object-cover" alt="" />
+          <img src="/images/hero-salon.jpg" className="w-full h-full object-cover" alt="" />
         </motion.div>
         
         <div className="max-w-4xl mx-auto text-center relative z-10">
@@ -72,7 +72,7 @@ export default function AboutPage() {
               <img
                 alt="Salon Interior"
                 className="w-full h-full object-cover"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkE5UOqj51f2vn-GiKh0j8rDyNjLug-Wbz43t6BkwjJo-2wuZhBRgvsSvd6loi7Q4YY0jPTokkbN0lA-kX0S4kjtjSWk5lHacK1MwHDJXDbTUm5PCz0eIqBPMWcXvOFeUgdNU_5vNJT15HcJaTYqgUG0xt_HnB_zB6NUcubXYwkWaH0EmPXdfM3lFtRf8lfNhKiXNWfJWtSIFkaICyYjEiV1LFysAnKlH3o1ey2wJkubwnEWInkuylsY0L_JQcXADh59TikT-ESwk"
+                src="/images/story-interior.jpg"
               />
             </div>
             <motion.div 
@@ -156,10 +156,10 @@ export default function AboutPage() {
           <motion.h2 {...fadeInUp} className="font-display-lg text-3xl md:text-7xl text-[#333b2a] mb-12 md:mb-20">Meet Our Visionaries</motion.h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
-            {[
-              { name: 'Aisha Khan', role: 'Senior Stylist', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAC0fAmYLBTeNwhcPurJH_WlaJohkeeBPpNfNgYEIXwpRC9IgercjLD5BgUZFn6-ZYpa023DUfxaBv8i0-Xnt2Tg1qbFq5Grtve3LZ6uv9bdJSkSYmQ4fod9sDR9B2jTx-J38XVjjCw2Zd_a34oL6zHqLLy928gRGB8GBjLBVrSReGVBkhqjRAs0TUmXbI67gryZrTZWPfFMj3UWGdFg8L3TNwPmwv6M2yC_MIXh10ag9cfAIxCCqrZUG6m_YbwaxBTv_0h5r4zZZM' },
-              { name: 'Fatima Ali', role: 'Makeup Expert', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBFpFXo8C9GVSzWpE1CawMyD-7Shb7wYGS0pTi2YdQe3lv9Alu2vxsqx34JPsgr0yfQZNJQkNZuKC5sB8OqGMxLmWUu5XZkLeiMdIg2Ot5MuaFRvQspnBPdpennzLR86rgneglHZ_FxsT_5BY_BjbxZ-3cj1DosdMr6CWNwkdenVgtoHr8DckxTeQ5sT9tPkAHdg10KGkHX0wpcgB4xvmW9tGlaihfxnUM0tn3DiCGv5OMDu5mTvUckJ7JbQR5s7T3ViUbaXrYOhuA' },
-              { name: 'Zara Ahmed', role: 'Color Specialist', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuD5JDfTXWfJDNQgDIt5ph4Ac_mu_H70wCt3FAhnp4ApDZ_zb_OW_RSgE8e_zVoc3WqyvLg9gc1xJSha8CyfWW4xU8nHiULSzhMFX0WngKCm6Mi2ckE2kdjUsQrYo22pMzDNQDMrfxsneCxwwyYQX5p65Oah5HkryTTqgaukCUcFy-DmEMkRiJUrCQ2FRTsipTm_9pUk-yO-mG9egAuqfQSZn5zX2hwBRzefoyBNByCOnw4pn7R4afeAJoyiVOW176wWc6fAV9xoeSo' },
+            {[  
+              { name: 'Aisha Khan', role: 'Senior Stylist', img: '/images/about-team/aisha-khan.png' },
+              { name: 'Fatima Ali', role: 'Makeup Expert', img: '/images/about-team/fatima%20ali.png' },
+              { name: 'Zara Ahmed', role: 'Color Specialist', img: '/images/about-team/zara.png' },
             ].map((artist, idx) => (
               <motion.div 
                 key={idx}

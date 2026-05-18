@@ -48,10 +48,9 @@ export default function Navbar() {
       <div className="flex justify-between items-center w-full px-6 md:px-margin-desktop max-w-container-max mx-auto h-full">
         <Link
           href="/"
-          className="font-display-lg text-2xl md:text-3xl text-primary flex items-center gap-2 group relative z-[70]"
+          className="flex items-center group relative z-[70]"
         >
-          <span className="italic font-decorative-accent text-secondary group-hover:scale-110 transition-transform">Reena</span>
-          <span className="hidden sm:inline font-light tracking-[0.2em] text-sm uppercase">Sanctuary</span>
+          <img src="/logo.svg" alt="Reena Sanctuary Logo" className="h-12 md:h-14 w-auto group-hover:scale-105 transition-transform duration-300" />
         </Link>
 
         {/* Desktop Nav */}
@@ -119,10 +118,10 @@ export default function Navbar() {
             <div className="flex justify-between items-center px-6 h-[80px] relative z-[110]">
               <Link
                 href="/"
-                className="font-display-lg text-2xl text-primary italic font-decorative-accent"
+                className="flex items-center"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Reena
+                <img src="/logo.svg" alt="Reena Sanctuary Logo" className="h-10 w-auto" />
               </Link>
               <button
                 className="w-10 h-10 flex items-center justify-center text-primary"

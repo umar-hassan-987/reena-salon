@@ -9,9 +9,9 @@ export default function Footer() {
         <div className="md:col-span-1 mb-8 md:mb-0">
           <Link
             href="/"
-            className="font-headline-sm text-[28px] text-[#4a5240] dark:text-primary-fixed-dim tracking-tighter mb-4 block"
+            className="mb-6 block"
           >
-            Reena Beauty Salon
+            <img src="/logo.svg" alt="Reena Beauty Salon Logo" className="h-14 w-auto" />
           </Link>
           <p className="font-body-md text-body-md text-on-surface-variant mt-4">
             Reena Beauty Salon is your trusted beauty destination for luxurious treatments, expert care, and personalized styling experiences.
