@@ -45,7 +45,7 @@ export const blogs = [
     date: 'February 28, 2024',
     readTime: '5 min read',
     author: 'Bridal Team',
-    authorImage: '/images/about-team/fatima%20ali.png',
+    authorImage: '/images/about-team/reena.PNG',
     content: `
       <p>Bridal beauty in 2024 has taken a turn toward the ethereal: soft, glowing, and deeply personal. At Reena Beauty Salon, our bridal makeup artists focus on looks that feel elegant in person and timeless in photographs. The best bridal makeup does not hide your features; it refines them.</p>
       <figure>
@@ -141,7 +141,7 @@ export const blogs = [
     date: 'May 12, 2024',
     readTime: '3 min read',
     author: 'Henna Studio',
-    authorImage: '/images/about-team/fatima%20ali.png',
+    authorImage: '/images/about-team/reena.PNG',
     content: `
       <p>Henna has always been a symbol of celebration, heritage, and artistic expression. Today, we are seeing an exciting shift toward minimal and refined designs that blend tradition with contemporary style. This approach feels elegant, photo-friendly, and deeply personal.</p>
       <figure>

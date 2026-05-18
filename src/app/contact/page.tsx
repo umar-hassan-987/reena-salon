@@ -2,8 +2,9 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MapPin, Phone, Mail, Clock, Send, CheckCircle2, MessageSquare, Instagram, ArrowRight, ShieldCheck, Star } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Send, CheckCircle2, MessageSquare, Instagram, ArrowRight, ShieldCheck, Star, AlertTriangle } from 'lucide-react';
 import FAQAccordion from '@/components/FAQAccordion';
+import emailjs from '@emailjs/browser';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -41,14 +42,59 @@ export default function ContactPage() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (validate()) {
       setStatus('loading');
-      setTimeout(() => {
+      
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+      if (!serviceId || !templateId || !publicKey) {
+        console.error('EmailJS credentials are not configured in environment variables.');
+        setStatus('error');
+        return;
+      }
+
+      const serviceLabels: Record<string, string> = {
+        hair: 'Hair Styling & Color',
+        skin: 'Skincare & Facials',
+        bridal: 'Bridal Makeup',
+        nails: 'Nail Art & Care',
+      };
+      const serviceLabel = serviceLabels[formData.service] || formData.service;
+
+      // We prefix the service requested inside the message text
+      // to ensure maximum clarity in the inbox even if the email template layout is basic.
+      const emailMessage = `Service Requested: ${serviceLabel}
+
+${formData.message}`;
+
+      const templateParams = {
+        title: serviceLabel,
+        name: formData.name,
+        from_name: formData.name,
+        from_email: formData.email,
+        email: formData.email,
+        phone_number: formData.phone,
+        message: emailMessage,
+        time: new Date().toLocaleString(),
+        date: new Date().toLocaleDateString(),
+      };
+
+      try {
+        await emailjs.send(serviceId, templateId, templateParams, {
+          publicKey: publicKey,
+        });
         setStatus('success');
         setFormData({ name: '', email: '', phone: '', service: '', date: '', message: '' });
-      }, 1500);
+      } catch (err: any) {
+        console.error('Failed to send email via EmailJS:', err);
+        const errorDetail = err?.text || err?.message || (typeof err === 'object' ? JSON.stringify(err) : String(err));
+        console.error('EmailJS Error Detail:', errorDetail);
+        setStatus('error');
+      }
     }
   };
 
@@ -232,8 +278,18 @@ export default function ContactPage() {
                     animate={{ opacity: 1, y: 0 }}
                     className="p-8 bg-green-50 text-green-700 border border-green-100 rounded-[2rem] flex items-center gap-4"
                   >
-                    <CheckCircle2 className="w-6 h-6" />
+                    <CheckCircle2 className="w-6 h-6 flex-shrink-0" />
                     <p className="font-body-md font-medium">Inquiry received! We'll contact you shortly.</p>
+                  </motion.div>
+                )}
+                {status === 'error' && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="p-8 bg-red-50 text-red-700 border border-red-100 rounded-[2rem] flex items-center gap-4"
+                  >
+                    <AlertTriangle className="w-6 h-6 flex-shrink-0" />
+                    <p className="font-body-md font-medium">Failed to send inquiry. Please check your internet, try again, or contact us directly.</p>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -281,7 +337,9 @@ export default function ContactPage() {
                     </div>
                     <div className="min-w-0">
                       <p className="font-label-caps text-[10px] text-white/50 uppercase tracking-[0.2em] mb-2">Email</p>
-                      <p className="font-body-md text-lg break-all">bookings@reenabeauty.pk</p>
+                      <a href="mailto:bookings@reenabeautysalon.com" className="font-body-md text-lg break-all hover:text-[#c1cab3] transition-colors">
+                        bookings@reenabeautysalon.com
+                      </a>
                     </div>
                   </div>
 

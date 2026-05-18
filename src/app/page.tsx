@@ -70,7 +70,7 @@ export default function HomePage() {
     <main className="pt-[72px] relative">
       {/* Hero Banner */}
       <section className="relative w-full h-[85vh] min-h-[600px] flex items-center justify-center overflow-hidden">
-        <motion.div 
+        <motion.div
           initial={{ scale: 1.1 }}
           animate={{ scale: 1 }}
           transition={{ duration: 10, ease: "linear" }}
@@ -83,9 +83,9 @@ export default function HomePage() {
           />
           <div className="absolute inset-0 bg-black/30 backdrop-blur-[1px]"></div>
         </motion.div>
-        
+
         <div className="relative z-10 text-center px-6 md:px-20 max-w-5xl mx-auto flex flex-col items-center">
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
@@ -94,7 +94,7 @@ export default function HomePage() {
             Enhancing Your Natural <span className="italic font-decorative-accent text-[#c1cab3]">Radiance</span>
           </motion.h1>
 
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
@@ -102,7 +102,7 @@ export default function HomePage() {
           >
             A trusted sanctuary where luxury, comfort, and personalized care come together to reveal the best version of you.
           </motion.p>
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8 }}
@@ -128,7 +128,7 @@ export default function HomePage() {
       <section className="relative -mt-10 md:-mt-16 z-20 py-10 md:py-12 bg-[#4a5240] mx-4 sm:mx-10 md:mx-20 rounded-2xl shadow-2xl">
 
         <div className="max-w-container-max mx-auto px-6">
-          <motion.div 
+          <motion.div
             variants={staggerContainer}
             initial="initial"
             whileInView="whileInView"
@@ -159,7 +159,7 @@ export default function HomePage() {
       {/* Philosophy */}
       <section className="py-24 md:py-32 px-6 md:px-20 max-w-container-max mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -173,7 +173,7 @@ export default function HomePage() {
             />
             <div className="absolute inset-0 bg-[#333b2a]/10 mix-blend-overlay"></div>
           </motion.div>
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -200,7 +200,7 @@ export default function HomePage() {
       {/* Before & After Section */}
       <section className="py-24 bg-[#f6f3f0] px-6 md:px-20 overflow-hidden">
         <div className="max-w-container-max mx-auto">
-          <motion.div 
+          <motion.div
             {...fadeInUp}
             className="text-center mb-16"
           >
@@ -209,47 +209,47 @@ export default function HomePage() {
 
             <p className="font-body-md text-on-surface-variant max-w-2xl mx-auto">Slide to witness the transformative power of our professional treatments.</p>
           </motion.div>
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-             <motion.div 
-               initial={{ opacity: 0, scale: 0.95 }}
-               whileInView={{ opacity: 1, scale: 1 }}
-               viewport={{ once: true }}
-             >
-               <ComparisonSlider 
-                 beforeImage="/images/modals/bride/before.png"
-                 afterImage="/images/modals/bride/after.png"
-                 beforeLabel="Before"
-                 afterLabel="After"
-               />
-             </motion.div>
-             <div className="space-y-8">
-               <motion.div {...fadeInUp} className="bg-white p-8 rounded-2xl shadow-sm border border-outline-variant">
-                 <h3 className="font-headline-sm text-2xl text-[#333b2a] mb-4">Bridal Transformation</h3>
-                 <p className="font-body-md text-on-surface-variant mb-6">Our signature bridal makeup focuses on highlighting your best features while ensuring a long-lasting, camera-ready finish that looks natural in person.</p>
-                 <div className="flex gap-4">
-                   <div className="flex-1 bg-surface p-4 rounded-lg">
-                     <p className="font-label-caps text-[10px] text-[#59614e] mb-1">Duration</p>
-                     <p className="font-body-md font-bold">120 Mins</p>
-                   </div>
-                   <div className="flex-1 bg-surface p-4 rounded-lg">
-                     <p className="font-label-caps text-[10px] text-[#59614e] mb-1">Intensity</p>
-                     <p className="font-body-md font-bold">Customized</p>
-                   </div>
-                 </div>
-               </motion.div>
-               <motion.div {...fadeInUp} transition={{ delay: 0.2 }} className="bg-[#4a5240] text-white p-8 rounded-2xl shadow-xl">
-                 <Quote className="w-10 h-10 text-[#c1cab3] mb-6 opacity-50" />
-                 <p className="text-xl italic font-display-lg mb-6 leading-relaxed">&quot;I couldn't believe it was me in the mirror. The team at Reena truly has magic in their hands.&quot;</p>
-                 <div className="flex items-center gap-4">
-                   <div className="w-12 h-12 rounded-full bg-[#c1cab3] flex items-center justify-center text-[#4a5240] font-bold">AK</div>
-                   <div>
-                     <p className="font-bold">Anam Khan</p>
-                     <p className="text-xs text-white/60">Bridal Client</p>
-                   </div>
-                 </div>
-               </motion.div>
-             </div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+            >
+              <ComparisonSlider
+                beforeImage="/images/modals/bride/before.png"
+                afterImage="/images/modals/bride/after.png"
+                beforeLabel="Before"
+                afterLabel="After"
+              />
+            </motion.div>
+            <div className="space-y-8">
+              <motion.div {...fadeInUp} className="bg-white p-8 rounded-2xl shadow-sm border border-outline-variant">
+                <h3 className="font-headline-sm text-2xl text-[#333b2a] mb-4">Bridal Transformation</h3>
+                <p className="font-body-md text-on-surface-variant mb-6">Our signature bridal makeup focuses on highlighting your best features while ensuring a long-lasting, camera-ready finish that looks natural in person.</p>
+                <div className="flex gap-4">
+                  <div className="flex-1 bg-surface p-4 rounded-lg">
+                    <p className="font-label-caps text-[10px] text-[#59614e] mb-1">Duration</p>
+                    <p className="font-body-md font-bold">120 Mins</p>
+                  </div>
+                  <div className="flex-1 bg-surface p-4 rounded-lg">
+                    <p className="font-label-caps text-[10px] text-[#59614e] mb-1">Intensity</p>
+                    <p className="font-body-md font-bold">Customized</p>
+                  </div>
+                </div>
+              </motion.div>
+              <motion.div {...fadeInUp} transition={{ delay: 0.2 }} className="bg-[#4a5240] text-white p-8 rounded-2xl shadow-xl">
+                <Quote className="w-10 h-10 text-[#c1cab3] mb-6 opacity-50" />
+                <p className="text-xl italic font-display-lg mb-6 leading-relaxed">&quot;I couldn't believe it was me in the mirror. The team at Reena truly has magic in their hands.&quot;</p>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-[#c1cab3] flex items-center justify-center text-[#4a5240] font-bold">AK</div>
+                  <div>
+                    <p className="font-bold">Anam Khan</p>
+                    <p className="text-xs text-white/60">Bridal Client</p>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -257,7 +257,7 @@ export default function HomePage() {
       {/* Services Preview */}
       <section id="services" className="py-24 md:py-32 bg-[#4a5240] px-6 md:px-20">
         <div className="max-w-container-max mx-auto">
-          <motion.div 
+          <motion.div
             {...fadeInUp}
             className="text-center mb-20"
           >
@@ -268,8 +268,8 @@ export default function HomePage() {
 
             <p className="text-white/70 max-w-xl mx-auto">Meticulously crafted beauty experiences designed for your ultimate wellbeing.</p>
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             variants={staggerContainer}
             initial="initial"
             whileInView="whileInView"
@@ -299,7 +299,7 @@ export default function HomePage() {
               }
             ].map((service, idx) => (
 
-              <motion.div 
+              <motion.div
                 key={idx}
                 variants={fadeInUp}
                 className="group relative h-[405px] md:h-[455px] rounded-2xl overflow-hidden cursor-pointer"
@@ -316,7 +316,7 @@ export default function HomePage() {
               </motion.div>
             ))}
           </motion.div>
-          
+
           <motion.div {...fadeInUp} className="mt-20 text-center">
             <Link href="/services" className="px-12 py-5 border border-white/20 text-white rounded-full hover:bg-white/10 transition-colors font-label-caps text-xs tracking-widest uppercase">
               View Complete Menu
@@ -328,7 +328,7 @@ export default function HomePage() {
       {/* Special Packages */}
       <section className="py-24 md:py-32 px-6 md:px-20 bg-background overflow-hidden">
         <div className="max-w-container-max mx-auto">
-          <motion.div 
+          <motion.div
             {...fadeInUp}
             className="text-center mb-20"
           >
@@ -338,7 +338,7 @@ export default function HomePage() {
             <p className="font-body-md text-on-surface-variant max-w-2xl mx-auto">Curated experiences that combine our most popular treatments for exceptional value and results.</p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             variants={staggerContainer}
             initial="initial"
             whileInView="whileInView"
@@ -366,7 +366,7 @@ export default function HomePage() {
               { image: "/images/service_img/facial.webp", title: "Premium Products", desc: "We exclusively use high-end, dermatology-tested products for safe and lasting results." },
               { image: "/images/service_img/nails.webp", title: "Hygiene First", desc: "Medical-grade sterilization and disposable kits are used for every single client." }
             ].map((item, idx) => (
-              <motion.div 
+              <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -386,33 +386,72 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Meet Our Artists */}
-      <section className="py-24 md:py-32 px-6 md:px-20 max-w-container-max mx-auto">
-        <div className="text-center mb-20">
-          <motion.h2 {...fadeInUp} className="font-display-lg text-3xl md:text-6xl text-[#333b2a] mb-4">Meet Our Artists</motion.h2>
+      {/* The Founder's Story Section */}
+      <section className="py-24 md:py-32 bg-white px-6 md:px-20 overflow-hidden">
+        <div className="max-w-container-max mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
 
-          <motion.p {...fadeInUp} transition={{ delay: 0.2 }} className="font-body-md text-on-surface-variant">The visionary hands behind your transformation.</motion.p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          {[
-            { name: "Sarah Ahmed", role: "Senior Stylist", img: "/images/team/Sarah.png" },
-            { name: "Fatima Khan", role: "Lead Makeup Artist", img: "/images/team/Fatima.png" },
-            { name: "Zainab Ali", role: "Esthetician", img: "/images/team/Zainab.png" }
-          ].map((artist, idx) => (
-            <motion.div 
-              key={idx}
-              whileHover={{ y: -10 }}
-              className="text-center group"
+            {/* Image Block */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1 }}
+              className="relative order-2 lg:order-1"
             >
-              <div className="relative w-56 md:w-64 h-72 md:h-80 mx-auto rounded-3xl overflow-hidden mb-8 shadow-xl">
-
-                <img src={artist.img} alt={artist.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
-                <div className="absolute inset-0 bg-[#333b2a]/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="relative w-full max-w-[480px] h-[500px] md:h-[650px] mx-auto rounded-[3rem] overflow-hidden shadow-2xl z-10 border-[12px] border-[#c1cab3]/20">
+                <img
+                  alt="Reena Azam - Owner & Lead Makeup Artist"
+                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                  src="/images/about-team/reena.PNG"
+                />
               </div>
-              <h3 className="font-headline-sm text-2xl text-[#333b2a] mb-2">{artist.name}</h3>
-              <p className="font-label-caps text-[#59614e] tracking-widest uppercase text-[10px]">{artist.role}</p>
+              {/* Asymmetrical background accents to make it look premium */}
+              <div className="absolute top-10 -left-10 w-40 h-40 bg-[#c1cab3] rounded-full blur-3xl opacity-30 -z-10"></div>
+              <div className="absolute -bottom-6 -right-6 w-72 h-72 bg-[#4a5240]/10 rounded-[4rem] -z-10"></div>
             </motion.div>
-          ))}
+
+            {/* Story Text Block */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1 }}
+              className="space-y-8 order-1 lg:order-2"
+            >
+              <span className="font-label-caps text-[#59614e] uppercase tracking-[0.3em] inline-block px-4 py-1.5 bg-[#59614e]/10 rounded-full text-[10px] font-semibold">
+                Our Founder &amp; Visionary
+              </span>
+
+              <h2 className="font-display-lg text-3xl sm:text-4xl md:text-6xl text-[#333b2a] leading-tight">
+                Crafting Elegance from <span className="italic font-decorative-accent text-[#59614e]">Humble Beginnings</span>
+              </h2>
+
+              <div className="space-y-6 font-body-md text-lg text-on-surface-variant leading-relaxed">
+                <p>
+                  Every sanctuary starts with passion. For Reena Azam, the journey began in a single room of her home, driven by a simple goal: helping women discover their most confident selves.
+                </p>
+                <p>
+                  By combining meticulous hygiene standards with a highly personalized, premium approach, Reena scaled her home studio purely through word-of-mouth.
+                </p>
+                <p>
+                  Today, she has transformed that humble beginning into a premium beauty destination in Islamabad's high-end <strong>G-11 Sector</strong> where luxury care meets personalized artistry.
+                </p>
+              </div>
+
+              {/* Ultra-Premium Quote */}
+              <div className="pt-6 border-t border-[#59614e]/10 flex flex-col gap-4">
+                <p className="font-display-lg text-2xl italic text-[#4a5240] leading-relaxed">
+                  &quot;Beauty is about amplifying your natural grace and feeling absolutely comfortable in your own skin.&quot;
+                </p>
+                <div>
+                  <p className="font-body-md font-bold text-[#333b2a] text-lg">Reena Azam</p>
+                  <p className="text-xs text-[#59614e] uppercase tracking-widest font-semibold">Founder &amp; Lead Makeup Artist</p>
+                </div>
+              </div>
+            </motion.div>
+
+          </div>
         </div>
       </section>
 
@@ -445,7 +484,7 @@ export default function HomePage() {
             Visit Our Instagram
           </a>
         </div>
-        <motion.div 
+        <motion.div
           variants={staggerContainer}
           initial="initial"
           whileInView="whileInView"
@@ -460,8 +499,8 @@ export default function HomePage() {
             'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=80',
             'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&q=80',
           ].map((src, idx) => (
-            <motion.div 
-              key={idx} 
+            <motion.div
+              key={idx}
               variants={fadeInUp}
               whileHover={{ scale: 0.98 }}
               className="aspect-square overflow-hidden rounded-2xl shadow-lg"
@@ -479,10 +518,10 @@ export default function HomePage() {
       {/* CTA Banner */}
       <section className="bg-[#333b2a] py-24 md:py-32 px-6 md:px-20 text-center relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
-           <img src="/images/saloon.webp" className="w-full h-full object-cover" alt="Salon" />
+          <img src="/images/saloon.webp" className="w-full h-full object-cover" alt="Salon" />
         </div>
 
-        <motion.div 
+        <motion.div
           {...fadeInUp}
           className="max-w-3xl mx-auto flex flex-col items-center relative z-10"
         >

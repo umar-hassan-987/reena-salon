@@ -26,7 +26,7 @@ export default function AboutPage() {
     <main className="overflow-hidden">
       {/* Page Hero */}
       <section className="pt-[160px] pb-[100px] px-6 md:px-20 bg-[#4a5240] relative overflow-hidden">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scale: 1.2 }}
           animate={{ opacity: 0.1, scale: 1 }}
           transition={{ duration: 2 }}
@@ -35,10 +35,10 @@ export default function AboutPage() {
 
           <img src="/images/hero-salon.jpg" className="w-full h-full object-cover" alt="" />
         </motion.div>
-        
+
         <div className="max-w-4xl mx-auto text-center relative z-10">
 
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
@@ -47,7 +47,7 @@ export default function AboutPage() {
             About <span className="italic font-decorative-accent text-[#c1cab3]">Reena</span>
           </motion.h1>
 
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
@@ -61,7 +61,7 @@ export default function AboutPage() {
       {/* Brand Story */}
       <section className="py-24 md:py-32 px-6 md:px-20 bg-background">
         <div className="max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -75,7 +75,7 @@ export default function AboutPage() {
                 src="/images/story-interior.jpg"
               />
             </div>
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -86,8 +86,8 @@ export default function AboutPage() {
               <p className="font-display-lg text-2xl text-[#4a5240] leading-tight">15+ Years of Excellence</p>
             </motion.div>
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -119,8 +119,8 @@ export default function AboutPage() {
             <p className="text-white/70 max-w-xl mx-auto text-sm md:text-base">Commitments that define every single experience at our sanctuary.</p>
 
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             variants={staggerContainer}
             initial="initial"
             whileInView="whileInView"
@@ -128,10 +128,10 @@ export default function AboutPage() {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
           >
             {[
-              { icon: <UserCheck className="w-8 h-8"/>, title: 'Personalised Care', desc: 'Customized beauty solutions designed around your unique style and comfort.' },
-              { icon: <Sparkles className="w-8 h-8"/>, title: 'Premium Products', desc: 'Trusted, high-quality brands to ensure safe treatments and long-lasting results.' },
-              { icon: <ShieldCheck className="w-8 h-8"/>, title: 'Hygienic Standards', desc: 'Strict cleanliness and medical-grade hygiene across all services.' },
-              { icon: <Heart className="w-8 h-8"/>, title: 'Expert Artists', desc: 'Experienced professionals passionate about precision and care.' },
+              { icon: <UserCheck className="w-8 h-8" />, title: 'Personalised Care', desc: 'Customized beauty solutions designed around your unique style and comfort.' },
+              { icon: <Sparkles className="w-8 h-8" />, title: 'Premium Products', desc: 'Trusted, high-quality brands to ensure safe treatments and long-lasting results.' },
+              { icon: <ShieldCheck className="w-8 h-8" />, title: 'Hygienic Standards', desc: 'Strict cleanliness and medical-grade hygiene across all services.' },
+              { icon: <Heart className="w-8 h-8" />, title: 'Expert Artists', desc: 'Experienced professionals passionate about precision and care.' },
             ].map((item, idx) => (
               <motion.div
                 key={idx}
@@ -156,12 +156,12 @@ export default function AboutPage() {
           <motion.h2 {...fadeInUp} className="font-display-lg text-3xl md:text-7xl text-[#333b2a] mb-12 md:mb-20">Meet Our Visionaries</motion.h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
-            {[  
-              { name: 'Aisha Khan', role: 'Senior Stylist', img: '/images/about-team/aisha-khan.png' },
-              { name: 'Fatima Ali', role: 'Makeup Expert', img: '/images/about-team/fatima%20ali.png' },
-              { name: 'Zara Ahmed', role: 'Color Specialist', img: '/images/about-team/zara.png' },
+            {[
+              { name: 'Laiba Ameen', role: 'Makeup Artist', img: '/images/about-team/Laiba.png' },
+              { name: 'Reena Azam', role: 'Owner & Makeup Expert', img: '/images/about-team/reena.png' },
+              { name: 'Ms Noreen', role: 'Managing Director', img: '/images/about-team/zara.png' },
             ].map((artist, idx) => (
-              <motion.div 
+              <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -184,7 +184,7 @@ export default function AboutPage() {
       {/* Manifesto Block */}
       <section className="py-24 md:py-40 px-6 md:px-20 bg-[#c1cab3] text-center relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full bg-[#4a5240]/5 pointer-events-none"></div>
-        <motion.div 
+        <motion.div
           {...fadeInUp}
           className="max-w-4xl mx-auto space-y-12 relative z-10"
         >

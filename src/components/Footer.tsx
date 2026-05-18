@@ -58,15 +58,21 @@ export default function Footer() {
           <h4 className="font-label-caps text-[12px] text-[#4a5240] uppercase tracking-widest mb-2">Legal</h4>
           <Link
             className="font-body-md text-body-md text-on-surface-variant hover:text-[#6b7260] transition-colors duration-300"
-            href="/privacy-policy"
+            href="/privacy-policy#information-collection"
           >
             Privacy Policy
           </Link>
           <Link
             className="font-body-md text-body-md text-on-surface-variant hover:text-[#6b7260] transition-colors duration-300"
-            href="#"
+            href="/privacy-policy#terms-of-service"
           >
             Terms of Service
+          </Link>
+          <Link
+            className="font-body-md text-body-md text-on-surface-variant hover:text-[#6b7260] transition-colors duration-300"
+            href="/privacy-policy#cancellation-policy"
+          >
+            Cancellation Policy
           </Link>
           <Link
             className="font-body-md text-body-md text-on-surface-variant hover:text-[#6b7260] transition-colors duration-300"
@@ -91,9 +97,9 @@ export default function Footer() {
           </p>
           <a
             className="font-body-md text-sm text-[#4a5240] hover:text-[#6b7260] transition-colors duration-300 break-all"
-            href="mailto:bookings@reenabeautysalon.pk"
+            href="mailto:bookings@reenabeautysalon.com"
           >
-            bookings@reenabeautysalon.pk
+            bookings@reenabeautysalon.com
           </a>
           <a
             className="font-body-md text-sm text-[#4a5240] hover:text-[#6b7260] transition-colors duration-300"

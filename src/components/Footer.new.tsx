@@ -30,7 +30,7 @@ export default function Footer() {
         <div>
           <h4 className="font-label-caps uppercase mb-3">Connect</h4>
           <p className="text-on-surface-variant">G-11 MARKAZ, Silver Plaza, 1st Floor, Islamabad</p>
-          <a className="mt-2 block text-on-surface-variant" href="mailto:Bookings@reenabeautysalon.pk">Bookings@reenabeautysalon.pk</a>
+          <a className="mt-2 block text-on-surface-variant" href="mailto:bookings@reenabeautysalon.com">bookings@reenabeautysalon.com</a>
           <a className="block text-on-surface-variant" href="tel:03115337766">03115337766</a>
         </div>
       </div>

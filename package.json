@@ -9,18 +9,20 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "emailjs": "^5.0.0",
+    "framer-motion": "^12.0.0",
+    "lucide-react": "^0.470.0",
     "next": "^15.3.3",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "framer-motion": "^12.0.0",
-    "lucide-react": "^0.470.0"
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.14",
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
-    "typescript": "~5.9.2",
     "tailwindcss": "^4.0.0",
-    "@tailwindcss/postcss": "^4.1.14"
+    "typescript": "~5.9.2"
   }
 }
