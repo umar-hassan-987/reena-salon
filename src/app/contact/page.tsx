@@ -20,12 +20,23 @@ export default function ContactPage() {
 
   const validate = () => {
     const newErrors: Record<string, string> = {};
-    if (!formData.name || formData.name.length < 2) newErrors.name = 'Name must be at least 2 characters.';
-    if (!formData.email || !/^\S+@\S+\.\S+$/.test(formData.email)) newErrors.email = 'Invalid email address.';
-    if (!formData.phone || !/^((\+92)|(0092)|(03))\d{9}$/.test(formData.phone.replace(/[\s-]/g, ''))) {
-      newErrors.phone = 'Enter a valid Pakistani phone number.';
+    if (!formData.name.trim() || formData.name.trim().length < 2) {
+      newErrors.name = 'Name must be at least 2 characters.';
     }
-    if (!formData.message || formData.message.length < 10) newErrors.message = 'Message must be at least 10 characters.';
+    if (!formData.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email address.';
+    }
+    if (!formData.phone.trim()) {
+      newErrors.phone = 'Please enter your phone number.';
+    } else if (!/^03\d{9}$/.test(formData.phone)) {
+      newErrors.phone = 'Phone number must be a valid 11-digit Pakistani mobile number starting with 03 (e.g. 03XXXXXXXXX).';
+    }
+    if (!formData.service) {
+      newErrors.service = 'Please select a service.';
+    }
+    if (!formData.message.trim() || formData.message.trim().length < 10) {
+      newErrors.message = 'Message must be at least 10 characters.';
+    }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -43,7 +54,14 @@ export default function ContactPage() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { id, value } = e.target;
-    setFormData((prev) => ({ ...prev, [id]: value }));
+    
+    if (id === 'phone') {
+      const onlyNums = value.replace(/\D/g, '').slice(0, 11);
+      setFormData((prev) => ({ ...prev, [id]: onlyNums }));
+    } else {
+      setFormData((prev) => ({ ...prev, [id]: value }));
+    }
+    
     if (errors[id]) setErrors((prev) => ({ ...prev, [id]: '' }));
   };
 
@@ -138,6 +156,7 @@ export default function ContactPage() {
                     value={formData.name}
                     onChange={handleChange}
                   />
+                  {errors.name && <p className="text-red-500 text-xs px-1">{errors.name}</p>}
                 </div>
                 <div className="space-y-3">
                   <label className="font-label-caps text-[10px] text-on-surface-variant/60 uppercase tracking-widest px-1" htmlFor="email">Email Address</label>
@@ -149,6 +168,7 @@ export default function ContactPage() {
                     value={formData.email}
                     onChange={handleChange}
                   />
+                  {errors.email && <p className="text-red-500 text-xs px-1">{errors.email}</p>}
                 </div>
               </div>
               
@@ -158,16 +178,18 @@ export default function ContactPage() {
                   <input
                     className={`minimal-input font-body-md text-primary w-full py-4 ${errors.phone ? 'border-red-400' : ''}`}
                     id="phone"
-                    placeholder="03XX XXXXXXX"
+                    placeholder="03XXXXXXXXX"
                     type="tel"
+                    maxLength={11}
                     value={formData.phone}
                     onChange={handleChange}
                   />
+                  {errors.phone && <p className="text-red-500 text-xs px-1">{errors.phone}</p>}
                 </div>
                 <div className="space-y-3">
                   <label className="font-label-caps text-[10px] text-on-surface-variant/60 uppercase tracking-widest px-1" htmlFor="service">Interested Service</label>
                   <select
-                    className="minimal-input font-body-md text-primary w-full py-4 bg-transparent cursor-pointer"
+                    className={`minimal-input font-body-md text-primary w-full py-4 bg-transparent cursor-pointer ${errors.service ? 'border-red-400' : ''}`}
                     id="service"
                     value={formData.service}
                     onChange={handleChange}
@@ -178,6 +200,7 @@ export default function ContactPage() {
                     <option value="bridal">Bridal Makeup</option>
                     <option value="nails">Nail Art & Care</option>
                   </select>
+                  {errors.service && <p className="text-red-500 text-xs px-1">{errors.service}</p>}
                 </div>
               </div>
 
@@ -191,6 +214,7 @@ export default function ContactPage() {
                   value={formData.message}
                   onChange={handleChange}
                 ></textarea>
+                {errors.message && <p className="text-red-500 text-xs px-1">{errors.message}</p>}
               </div>
 
               <button

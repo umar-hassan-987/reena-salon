@@ -12,17 +12,17 @@ export default function ServicesPage() {
   const categories = [
     {
       id: 'threading',
-      name: 'Threading',
+      name: 'Threading / Face Wax',
       image: '/images/service_img/threading.webp',
       items: [
-        { name: 'Eyebrows', id: 'threading-eyebrows' },
-        { name: 'Upper Lip' },
-        { name: 'Brow Waxing' },
-        { name: 'Forehead' },
-        { name: 'Chin' },
-        { name: 'Sidelburn' },
-        { name: 'Full Face Wax With Mask' },
-        { name: 'Full Face Threading', id: 'threading-full-face' },
+        { name: 'Eyebrows', price: 'Rs. 300', id: 'threading-eyebrows' },
+        { name: 'Upper Lip', price: 'Rs. 300' },
+        { name: 'Brow Waxing', price: 'Rs. 500' },
+        { name: 'Forehead', price: 'Rs. 500' },
+        { name: 'Chin', price: 'Rs. 700' },
+        { name: 'Sideburn', price: 'Rs. 500' },
+        { name: 'Full Face Wax', price: 'Rs. 1500' },
+        { name: 'Full Face Threading', price: 'Rs. 1000', id: 'threading-full-face' },
       ],
     },
     {
@@ -30,14 +30,16 @@ export default function ServicesPage() {
       name: 'Waxing',
       image: '/images/service_img/waxing.webp',
       items: [
-        { name: 'Half/Full Arms' },
-        { name: 'Half/Full Legs' },
-        { name: 'Underarms' },
-        { name: 'Back Neck' },
-        { name: 'Belly' },
-        { name: 'Full Body', id: 'waxing-full-body' },
-        { name: 'Brazilian' },
-        { name: 'Bikini' },
+        { name: 'Half Arms', price: 'Rs. 1000' },
+        { name: 'Full Arms', price: 'Rs. 1500' },
+        { name: 'Half Legs', price: 'Rs. 1500' },
+        { name: 'Full Legs', price: 'Rs. 2000' },
+        { name: 'Underarms', price: 'Rs. 1000' },
+        { name: 'Back & Neck', price: 'Rs. 1500' },
+        { name: 'Belly', price: 'Rs. 1500' },
+        { name: 'Full Body', price: 'Rs. 5000', id: 'waxing-full-body' },
+        { name: 'Brazilian', price: 'Rs. 1000' },
+        { name: 'Bikini', price: 'Rs. 1500' },
       ],
     },
     {
@@ -45,14 +47,20 @@ export default function ServicesPage() {
       name: 'Facials',
       image: '/images/service_img/facial.webp',
       items: [
-        { name: 'Thalia' },
-        { name: 'Janssen (Oak Ferox)', id: 'facials-janssen' },
-        { name: 'Janssen AM Firming Ampoule' },
-        { name: 'Gold' },
-        { name: 'Whitening', id: 'facials-whitening' },
-        { name: 'Deep Cleansing' },
-        { name: 'Polymer' },
-        { name: 'Bleach' },
+        { name: 'Thalgo Facial', price: 'Rs. 10,000' },
+        { name: 'Janssen (Oak Ferox)', price: 'Rs. 7000', id: 'facials-janssen' },
+        { name: 'Janssen AM Firming Ampoule', price: 'Rs. 7000' },
+        { name: 'Gold Facial', price: 'Rs. 5000' },
+        { name: 'Whitening Facial', price: 'Rs. 3000', id: 'facials-whitening' },
+        { name: 'Deep Cleansing', price: 'Rs. 2000' },
+      ],
+    },
+    {
+      id: 'bleach',
+      name: 'Bleach',
+      image: '/images/service_img/facial.webp',
+      items: [
+        { name: 'Bleach', price: 'Rs. 500' },
       ],
     },
     {
@@ -60,14 +68,14 @@ export default function ServicesPage() {
       name: 'Hair Styling',
       image: '/images/service_img/haircut.webp',
       items: [
-        { name: 'Cut (Professional)', id: 'hair-cut' },
-        { name: 'Dye (Premium)' },
-        { name: 'Highlights' },
-        { name: 'Balayage', id: 'hair-balayage' },
-        { name: 'Keratin Treatment' },
-        { name: 'Diamond Treatment' },
-        { name: 'Nikkah Styling' },
-        { name: 'Bridal Hairdo' },
+        { name: 'Professional Hair Cut (with Blow Dry)', price: 'Rs. 5000', id: 'hair-cut' },
+        { name: 'Dye Premium', price: 'Price on Consultation' },
+        { name: 'Highlights', price: 'Price on Consultation' },
+        { name: 'Balayage', price: 'Price on Consultation', id: 'hair-balayage' },
+        { name: 'Keratin Treatment', price: 'Price on Consultation' },
+        { name: 'Diamond Treatment', price: 'Price on Consultation' },
+        { name: 'Nikah Styling', price: 'Rs. 4000' },
+        { name: 'Bridal Hairdo', price: 'Rs. 4000' },
       ],
     },
     {
@@ -75,26 +83,35 @@ export default function ServicesPage() {
         name: 'Makeup',
         image: '/images/service_img/bride.webp',
         items: [
-          { name: 'Engagement' },
-          { name: 'Natural Glam' },
-          { name: 'Model Bride' },
-          { name: 'Party Signature' },
-          { name: 'Mehndi' },
-          { name: 'Baraat', id: 'makeup-bridal' },
+          { name: 'Engagement Makeup', juniorPrice: 'Rs. 15,000', seniorPrice: 'Rs. 25,000' },
+          { name: 'Natural Glam', juniorPrice: 'Rs. 10,000', seniorPrice: 'Rs. 20,000' },
+          { name: 'Model Bride', juniorPrice: 'Rs. 30,000', seniorPrice: 'Rs. 50,000' },
+          { name: 'Party Signature', juniorPrice: 'Rs. 7,000', seniorPrice: 'Rs. 15,000' },
+          { name: 'Mehndi Makeup', juniorPrice: 'Rs. 20,000', seniorPrice: 'Rs. 30,000' },
+          { name: 'Barat Makeup', id: 'makeup-bridal', juniorPrice: 'Rs. 25,000', seniorPrice: 'Rs. 35,000' },
         ],
       },
   ];
 
   const handleServiceClick = (item: any, catName: string) => {
-    const dataId = item.id || `${catName.toLowerCase()}-${item.name.toLowerCase().replace(/\s+/g, '-')}`;
-    const details = servicesData[dataId] || {
-      id: dataId,
-      name: item.name,
-      category: catName,
-      description: `Experience our signature ${item.name} ritual. Our experts use premium products and refined techniques to ensure a relaxing and transformative session tailored specifically to your needs.`,
-      benefits: ['Premium Products', 'Expert Application', 'Relaxing Environment'],
-      priceRange: 'Contact for Pricing'
+    const dataId = item.id || `${catName.toLowerCase().replace(/\s+/g, '-')}-${item.name.toLowerCase().replace(/\s+/g, '-')}`;
+    const details = {
+      ...(servicesData[dataId] || {
+        id: dataId,
+        name: item.name,
+        category: catName,
+        description: `Experience our signature ${item.name} ritual. Our experts use premium products and refined techniques to ensure a relaxing and transformative session tailored specifically to your needs.`,
+        benefits: ['Premium Products', 'Expert Application', 'Relaxing Environment'],
+        priceRange: item.price || 'Contact for Pricing'
+      })
     };
+    if (item.price) {
+      details.priceRange = item.price;
+    }
+    if (catName === 'Makeup') {
+      details.juniorPrice = item.juniorPrice;
+      details.seniorPrice = item.seniorPrice;
+    }
     setSelectedService(details);
   };
 
@@ -218,11 +235,11 @@ export default function ServicesPage() {
                   onClick={() => handleServiceClick(item, cat.name)}
                   className="flex justify-between items-center border-b border-[#4a5240]/10 pb-6 group cursor-pointer hover:border-[#4a5240] transition-all"
                 >
-                  <div className="space-y-1">
-                    <h3 className="font-headline-sm text-2xl text-[#4a5240] group-hover:text-[#59614e] transition-colors">{item.name}</h3>
+                  <div className="space-y-1 flex-1 pr-6">
+                    <h3 className="font-headline-sm text-xl md:text-2xl text-[#4a5240] group-hover:text-[#59614e] transition-colors">{item.name}</h3>
                     <p className="font-label-caps text-[9px] uppercase tracking-widest text-[#c1cab3] opacity-0 group-hover:opacity-100 transition-opacity">View Ritual Details</p>
                   </div>
-                  <div className="w-10 h-10 rounded-full bg-[#f6f3f0] flex items-center justify-center text-[#4a5240] group-hover:bg-[#4a5240] group-hover:text-white transition-all">
+                  <div className="w-10 h-10 flex-shrink-0 rounded-full bg-[#f6f3f0] flex items-center justify-center text-[#4a5240] group-hover:bg-[#4a5240] group-hover:text-white transition-all">
                     <ArrowRight className="w-4 h-4" />
                   </div>
                 </motion.div>
@@ -259,9 +276,9 @@ export default function ServicesPage() {
               <div className="w-full md:w-2/5 h-64 md:h-auto relative bg-[#4a5240]">
                 <img 
                   src={
-                    selectedService.category === 'Threading' ? '/images/service_img/threading.webp' :
+                    selectedService.category === 'Threading' || selectedService.category === 'Threading / Face Wax' ? '/images/service_img/threading.webp' :
                     selectedService.category === 'Waxing' ? '/images/service_img/waxing.webp' :
-                    selectedService.category === 'Facials' ? '/images/service_img/facial.webp' :
+                    selectedService.category === 'Facials' || selectedService.category === 'Bleach' ? '/images/service_img/facial.webp' :
                     selectedService.category === 'Hair Styling' ? '/images/service_img/haircut.webp' :
                     '/images/service_img/bride.webp'
                   }
@@ -282,20 +299,53 @@ export default function ServicesPage() {
                   </div>
 
                   <div className="grid grid-cols-2 gap-6">
-                    <div className="bg-[#f6f3f0] p-6 rounded-2xl">
-                      <div className="flex items-center gap-3 text-[#4a5240] mb-2">
-                        <Clock className="w-4 h-4" />
-                        <span className="font-label-caps text-[10px] uppercase tracking-widest">Duration</span>
-                      </div>
-                      <p className="font-body-md font-bold text-[#333b2a]">{selectedService.duration || 'Consultation'}</p>
-                    </div>
-                    <div className="bg-[#f6f3f0] p-6 rounded-2xl">
-                      <div className="flex items-center gap-3 text-[#4a5240] mb-2">
-                        <Star className="w-4 h-4" />
-                        <span className="font-label-caps text-[10px] uppercase tracking-widest">Price Ritual</span>
-                      </div>
-                      <p className="font-body-md font-bold text-[#333b2a]">{selectedService.priceRange || 'Contact Us'}</p>
-                    </div>
+                    {selectedService.category === 'Makeup' ? (
+                      <>
+                        <div className="bg-[#f6f3f0] p-6 rounded-2xl">
+                          <div className="flex items-center gap-3 text-[#4a5240] mb-2">
+                            <Brush className="w-4 h-4" />
+                            <span className="font-label-caps text-[10px] uppercase tracking-widest">Junior Artist</span>
+                          </div>
+                          <p className="font-body-md font-bold text-[#333b2a]">{selectedService.juniorPrice || 'Contact Us'}</p>
+                        </div>
+                        <div className="bg-[#f6f3f0] p-6 rounded-2xl">
+                          <div className="flex items-center gap-3 text-[#4a5240] mb-2">
+                            <Sparkles className="w-4 h-4" />
+                            <span className="font-label-caps text-[10px] uppercase tracking-widest">Senior Artist</span>
+                          </div>
+                          <p className="font-body-md font-bold text-[#333b2a]">{selectedService.seniorPrice || 'Contact Us'}</p>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        {selectedService.duration ? (
+                          <>
+                            <div className="bg-[#f6f3f0] p-6 rounded-2xl">
+                              <div className="flex items-center gap-3 text-[#4a5240] mb-2">
+                                <Clock className="w-4 h-4" />
+                                <span className="font-label-caps text-[10px] uppercase tracking-widest">Duration</span>
+                              </div>
+                              <p className="font-body-md font-bold text-[#333b2a]">{selectedService.duration}</p>
+                            </div>
+                            <div className="bg-[#f6f3f0] p-6 rounded-2xl">
+                              <div className="flex items-center gap-3 text-[#4a5240] mb-2">
+                                <Star className="w-4 h-4" />
+                                <span className="font-label-caps text-[10px] uppercase tracking-widest">Price Ritual</span>
+                              </div>
+                              <p className="font-body-md font-bold text-[#333b2a]">{selectedService.priceRange || 'Contact Us'}</p>
+                            </div>
+                          </>
+                        ) : (
+                          <div className="bg-[#f6f3f0] p-6 rounded-2xl col-span-2">
+                            <div className="flex items-center gap-3 text-[#4a5240] mb-2">
+                              <Star className="w-4 h-4" />
+                              <span className="font-label-caps text-[10px] uppercase tracking-widest">Price Ritual</span>
+                            </div>
+                            <p className="font-body-md font-bold text-[#333b2a]">{selectedService.priceRange || 'Contact Us'}</p>
+                          </div>
+                        )}
+                      </>
+                    )}
                   </div>
 
                   <div>

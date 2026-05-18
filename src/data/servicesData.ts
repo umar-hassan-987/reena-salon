@@ -6,6 +6,8 @@ export interface ServiceDetail {
   duration?: string;
   benefits: string[];
   priceRange?: string;
+  juniorPrice?: string;
+  seniorPrice?: string;
 }
 
 export const servicesData: Record<string, ServiceDetail> = {
@@ -26,7 +28,7 @@ export const servicesData: Record<string, ServiceDetail> = {
     description: 'Complete facial hair removal for a smooth, clean canvas. Includes forehead, cheeks, chin, and upper lip.',
     duration: '45 mins',
     benefits: ['Smooth skin texture', 'Exfoliating effect', 'Even makeup application'],
-    priceRange: 'Rs. 1200'
+    priceRange: 'Rs. 1000'
   },
   
   // Waxing
